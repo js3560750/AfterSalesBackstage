@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- 这是mybatis generator的配置文件 -->
+<generatorConfiguration>
+	<!-- 驱动包存放的位置，不填会报错 -->
+	<classPathEntry location="C:/Users/18894/.m2/repository/mysql/mysql-connector-java/5.1.45/mysql-connector-java-5.1.45.jar"/>
+	<!-- 
+		context:生成一组对象的环境 
+		targetRuntime:  
+        1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXBySample；  
+        2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；选Simple只生成主键相关的查询语句
+	 -->
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    
+    	<!-- 生成的Java文件的编码 -->  
+   		<property name="javaFileEncoding" value="UTF-8"/>
+   		<!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->    
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+		<!-- 
+			必须要有的，使用这个配置链接数据库  
+			注意connectionURL的值，每个字段用&amp;隔开，否则会报错
+     	-->  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/aftersales?useUnicode=true&amp;useSSL=false&amp;characterEncoding=utf-8"
+                        userId="root"
+                        password="83862973">
+        </jdbcConnection>
+
+		<!-- 
+			java模型创建器，是必须要的元素  
+	                      负责：1，key类（见context的defaultModelType）；2，java类；3，查询类  
+	        targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制；  
+	        targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录  
+	     -->  
+        <javaModelGenerator targetPackage="com.jinsong.model" targetProject="src/main/java"/>
+
+
+		<!-- 
+			生成SQL map的XML文件生成器，  
+	       	注意，在Mybatis3之后，我们可以使用mapper.xml文件+Mapper接口（或者不用mapper接口），  
+	                      或者只使用Mapper接口+Annotation，所以，如果 javaClientGenerator配置中配置了需要生成XML的话，这个元素就必须配置  
+	        targetPackage/targetProject:同javaModelGenerator  
+	     -->  
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+
+		<!-- 
+			对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口   
+	        targetPackage/targetProject:同javaModelGenerator  
+	        type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：  
+	            1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中），不会生成对应的XML；  
+	            2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；  
+	            3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；  
+	        	注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER  
+	    --> 
+        <javaClientGenerator targetPackage="com.jinsong.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+		
+		<!-- 选择要自动生成的表名，填%代表所有表都生成 -->
+        <table tableName="%" >
+            <!--mysql 配置-->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+            <!--oracle 配置-->
+            <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>-->
+        </table>
+        
+    </context>
+</generatorConfiguration>
