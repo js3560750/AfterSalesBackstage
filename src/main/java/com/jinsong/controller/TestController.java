@@ -152,9 +152,10 @@ public class TestController {
 		// 获取文件的后缀名
 		String suffixName = fileName.substring(fileName.lastIndexOf("."));
 		logger.info("上传的后缀名为：" + suffixName);
-		// 文件上传后的路径
-		String filePath = "C:/Users/18894/Desktop/";
+		// 文件上传后的路径，注意最后还要加一个/，会存在img文件夹下
+		String filePath = "C:/Users/18894/Desktop/Design/JAVA/MoemilAfterSales/src/main/resources/img/";
 		File dest = new File(filePath + fileName);
+	
 		//若目录不存在创建目录
 		if (!dest.getParentFile().exists()) {
 			dest.getParentFile().mkdirs();
