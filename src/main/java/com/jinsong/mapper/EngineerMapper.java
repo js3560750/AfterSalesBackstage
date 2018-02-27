@@ -46,4 +46,10 @@ public interface EngineerMapper {
      * @mbg.generated Thu Feb 08 10:37:57 CST 2018
      */
     int updateByPrimaryKey(Engineer record);
+    
+    /**
+     * 根据姓名获得工程师，所以数据库里工程师姓名不能同名，在输入的时候要进行判定和限制
+     * @return
+     */
+    Engineer selectByName(String engineer);
 }

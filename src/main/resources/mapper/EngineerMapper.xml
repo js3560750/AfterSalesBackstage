@@ -74,4 +74,11 @@
     select id, gmt_create, gmt_modified, engineer, tel, account, password
     from engineer
   </select>
+  
+  <select id="selectByName" resultMap="BaseResultMap">
+    
+    select *
+    from engineer
+    where engineer=#{engineer}
+  </select>
 </mapper>

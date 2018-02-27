@@ -35,6 +35,8 @@ public class HospitalController {
 
 	/**
 	 * 医生提交repair工单
+	 * 
+	 * @ModelAttribute 的请求头必须用"Content-Type": "application/x-www-form-urlencoded"
 	 */
 	@PostMapping("/repair")
 	public String insertRepair(@ModelAttribute Repair repair) {
@@ -122,5 +124,8 @@ public class HospitalController {
 		}
 		return JsUtil.getJSONString(1, "提交失败");
 	}
+	
+	
+	
 
 }

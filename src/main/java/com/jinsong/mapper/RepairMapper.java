@@ -56,4 +56,9 @@ public interface RepairMapper {
      * 
      */
     List<Repair> selectAllByOpenid(String openid);
+    
+    /**
+     * 获得status=null也就是“未处理”的repair工单
+     */
+    List<Repair> selectByStautsNull();
 }

@@ -50,6 +50,9 @@ public class HospitalServiceImpl implements HospitalService {
 		String orderNumber = "wx"+str+num;
 		repair.setOrderNumber(orderNumber);
 		
+		//订单状态
+		repair.setStatus("未处理");
+		
 		
 		return repairMapper.insert(repair)>0?repair.getId():0;
 	}
