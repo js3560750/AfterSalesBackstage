@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<!--AmazingUI -->
+	<link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+ 	<link rel="stylesheet" href="/assets/css/admin.css">
+	<title>后台管理</title>
+</head>
+<body>
+	repair详情页
+	<div th:text="${model.id}"></div>
+	<br/>
+	<div th:text="${model.engineer}"></div>
+
+
+<!--添加下面两个div 以给页面添加滑动条！！！-->
+<div class="admin-content">
+<div class="admin-content-body">
+	<form class="am-form" method="post" enctype="multipart/form-data" action="#">
+  		<fieldset>
+    	<legend>工单详情</legend>
+    		<div class="am-form-group">
+      			<label for="doc-ta-1">工程师</label>
+      			<p><input type="engineer" class="am-form-field am-radius" placeholder=""  name="title" th:value="${model.engineer}" /></p>  
+    		</div>
+    	</fieldset>
+	</form>
+</div>
+</div>
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="/assets/js/amazeui.min.js"></script>
+	<script src="/assets/js/app.js"></script>
+</body>
+</html>

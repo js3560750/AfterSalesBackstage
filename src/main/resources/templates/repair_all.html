@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- 新 Bootstrap 核心 CSS 文件 CDN联网版-->
+<!-- <link
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"> -->
+<!--新 Bootstrap 核心 CSS 文件 本地版-->
+<link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+<title>后台管理</title>
+
+</head>
+<body style="overflow-y: auto; overflow-x: auto">
+	<!--添加了自动滚动条，当页面内容超出页面大小时出现滚动条-->
+	<div class="container">
+	<br>
+		<div class="panel panel-default">
+			
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>工单编号</th>
+							<th>产品名称</th>
+							<th>医院名称</th>
+							<th>工程师</th>
+							<th>记录时间</th>
+							<th>工单状态</th>
+							<th>服务评价</th>
+							<th>管理操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- thymeleaf标签全部写在标签里面，标签外面也能写静态的数据，真正实现一个页面里，前后端数据分离！！！ -->
+					<tr th:each="sk:${pageInfo.list}">	<!-- list是后端传过来的Model里的变量名 -->
+						<td th:text="${sk.id}">ID</td>
+						<td th:text="${sk.orderNumber}">工单编号</td>
+						<td th:text="${sk.productName}">product_name</td>
+						<td th:text="${sk.hospitalName}">hospital_name</td>
+						<td th:text="${sk.engineer}">engineer</td>
+						<td th:text="${#dates.format(sk.gmtCreate,'yyyy-MM-dd HH:mm:ss')}">gmt_create</td>
+						<td th:text="${sk.status}">status</td>
+						<td th:text="${sk.serviceRating}">service_rating</td>
+						<td>
+							<a class="btn btn-info" th:href="@{/web/repair/{id}/detail(id=${sk.id})}">详情页</a>
+							<a class="btn btn-danger" th:href="@{/web/repair/{id}/delete(id=${sk.id})}">删除</a>
+						</td>
+					</tr>
+						
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+	<!--分页-->
+	<nav aria-label="Page navigation" style="text-align: center;">
+		<ul class="pagination" >
+			
+			<!--首页-->
+			<li>
+				<a th:href="@{/web/repair/list?pn=1}">首页</a>
+			</li>
+
+			<!--上一页-->
+			<li>
+					<a 
+					th:if="${pageInfo.hasPreviousPage} == true"
+					th:href="@{/web/repair/list?(pn=${pageInfo.pageNum}-1)}" aria-label="Previous">上一页</a>
+
+			</li>
+
+			<!--循环遍历连续显示的页面，若是当前页就高亮显示-->
+			<!--这里的th:class真是精髓！！！！细心体会-->
+			<li th:each="page_num:${pageInfo.navigatepageNums}" th:class="${page_num}==${pageInfo.pageNum}?active">
+				<a th:href="@{/web/repair/list?(pn=${page_num})}" th:text="${page_num}"></a>
+			</li>
+
+
+			<!--下一页-->
+			<li>
+					<a 
+					th:if="${pageInfo.hasNextPage} == true"
+					th:href="@{/web/repair/list?(pn=${pageInfo.pageNum}+1)}" aria-label="Next">下一页</a>
+
+			</li>
+
+			<!--尾页-->
+			<li>
+				<a th:href="@{/web/repair/list?(pn=${pageInfo.pages})}">尾页</a>
+			</li>
+
+			
+			
+		</ul>
+	</nav>
+
+
+
+
+
+	<!--联网版本-->
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<!-- <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script> -->
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<!-- <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+
+	<!--本地版本-->
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="/bootstrap-3.3.7-dist/jquery-2.1.1/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
