@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 							"/web/login", 
 							"/assets/**",
 							"/hello").permitAll() // web/login不会被拦截，同时静态资源static目录下的assets文件夹也不会被拦截
-					.antMatchers("/web/product/*").hasRole("USER")
+					//.antMatchers("/web/product/*").hasRole("USER")
 					.anyRequest().authenticated() // 其他请求都要身份认证
 				.and()
 				.logout().invalidateHttpSession(true).logoutSuccessUrl("/web/login")	//登出操作，设置登出后清除SESSION，和登出后跳转的页面，前端只需设置登出按钮的URL为/logout就行，SpringSecurity默认实现，不需要写logout的控制器

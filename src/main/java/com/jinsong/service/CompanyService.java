@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.jinsong.model.Engineer;
+import com.jinsong.model.Factory;
 import com.jinsong.model.Install;
 import com.jinsong.model.Maintain;
 import com.jinsong.model.Repair;
@@ -101,5 +102,35 @@ public interface CompanyService {
      * 通过hospital_name或者engineer来搜索maintain工单
      */
 	List<Maintain> selectMaintainBySearch(String searchInfo);
+	
+	/**
+	 * 添加质检部门登记的设备信息factory
+	 */
+	long insertFactory(Factory factory);
+	
+	/**
+	 * 根据id修改质检部门登记的设备信息factory
+	 */
+	long updateFactory(Factory factory);
+	
+	/**
+	 * 获得所有质检部门登记的设备信息factory
+	 */
+	List<Factory> selectAllFactory();
+	
+	/**
+	 * 根据id删除质检部门登记的设备信息factory
+	 */
+	long deleteFactoryById(long id);
+	
+	/**
+	 * 根据id获得单个factory
+	 */
+	Factory selectFactoryById(long id);
+	
+	/**
+     * 通过serial_number来搜索factory
+     */
+	List<Factory> selectFactoryBySearch(String searchInfo);
 	
 }

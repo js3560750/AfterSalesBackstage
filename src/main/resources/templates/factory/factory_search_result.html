@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- 新 Bootstrap 核心 CSS 文件 CDN联网版-->
+<!-- <link
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"> -->
+	<!--新 Bootstrap 核心 CSS 文件 本地版-->
+	<link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<title>后台管理</title>
+
+</head>
+<body style="overflow-y: auto; overflow-x: auto">
+	<!--添加了自动滚动条，当页面内容超出页面大小时出现滚动条-->
+	<div class="container">
+		<div class="panel panel-default">
+				<h3 style="text-align: center;">搜索结果</h3>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>仪器编号</th>
+							<th>产品名称</th>
+							<th>产品型号</th>
+							<th>领料批号</th>
+							<th>批数量</th>
+							<th>批次编号</th>
+							<th>生产批号</th>
+							<th>录入时间</th>
+							<th>管理操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- thymeleaf标签全部写在标签里面，标签外面也能写静态的数据，真正实现一个页面里，前后端数据分离！！！ -->
+						<tr th:each="sk:${factoryList}">	<!-- list是后端传过来的Model里的变量名 -->
+							<td th:text="${sk.id}">ID</td>
+							<td th:text="${sk.serialNumber}">仪器编号</td>
+							<td th:text="${sk.productName}">产品名称</td>
+							<td th:text="${sk.productModel}">产品型号</td>
+							<td th:text="${sk.pickingNumber}">领料批号</td>
+							<td th:text="${sk.batchNumber}">批数量</td>
+							<td th:text="${sk.batchCode}">批次编号</td>
+							<td th:text="${sk.produceCode}">生产批号</td>
+							<td th:text="${#dates.format(sk.gmtCreate,'yyyy-MM-dd HH:mm:ss')}">录入时间</td>
+							<td>
+								<a class="btn btn-info" th:href="@{/web/factory/{id}(id=${sk.id})}">详情页</a>
+							<!--
+								a标签只能发送PUT请求，为了REST风格
+								这里通过JS使点击a标签发送DELETE请求
+								a标签的id里存储URL信息
+							-->
+							<a class="btn btn-danger" th:id="@{/web/factory/{id}(id=${sk.id})}"  onclick="javascript:
+							if(confirm('确定要删除此内容吗？')){
+								myDelete(this);
+								return true;
+							}
+							return false;">删除
+						</a>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+</div>
+
+</div>
+
+
+
+<!--联网版本-->
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<!-- <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script> -->
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<!-- <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+
+<!--本地版本-->
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/bootstrap-3.3.7-dist/jquery-2.1.1/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<!--AmazingUI -->
+	<link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+ 	<link rel="stylesheet" href="/assets/css/admin.css">
+	<title>后台管理</title>
+</head>
+<body>
+<!--添加下面两个div 以给页面添加滑动条！！！-->
+<div class="admin-content">
+<!-- <div class="admin-content-body"> -->
+	<form class="am-form" method="post" enctype="multipart/form-data" action="#">
+  		<fieldset>
+    	<legend>保养工单详情</legend>
+    		<div class="am-form-group">
+      			<label for="doc-ta-1">id</label>
+      				<p><input type="text" class="am-form-field am-radius" name="id" th:value="${model.id}" /></p>
+      			<label for="doc-ta-1">工单编号</label>
+      				<p><input type="text" class="am-form-field am-radius" name="orderNumber" th:value="${model.orderNumber}" /></p>
+      			<label for="doc-ta-1">工程师</label>
+      				<p><input type="text" class="am-form-field am-radius" name="engineer" th:value="${model.engineer}" /></p>
+      			<label for="doc-ta-1">工程师电话</label>
+      				<p><input type="text" class="am-form-field am-radius" name="engineerTel" th:value="${model.engineerTel}" /></p> 
+      			<label for="doc-ta-1">工单状态</label>
+      				<p><input type="text" class="am-form-field am-radius" name="status" th:value="${model.status}" /></p>
+      			<label for="doc-ta-1">派单时间</label>
+      				<p><input type="text" class="am-form-field am-radius" name="orderTime" th:value="${model.orderTime}" /></p>
+      			<label for="doc-ta-1">预计到达时间</label>
+      				<p><input type="text" class="am-form-field am-radius" name="estimatedArrivalTime" th:value="${model.estimatedArrivalTime}" /></p> 
+      			<label for="doc-ta-1">实际到达时间</label>
+      				<p><input type="text" class="am-form-field am-radius" name="arrivaledTime" th:value="${model.arrivaledTime}" /></p> 
+      			<label for="doc-ta-1">工单完成时间</label>
+      				<p><input type="text" class="am-form-field am-radius" name="finishedTime" th:value="${model.finishedTime}" /></p> 
+      			<label for="doc-ta-1">医院名称</label>
+      				<p><input type="text" class="am-form-field am-radius" name="hospitalName" th:value="${model.hospitalName}" /></p>
+            <label for="doc-ta-1">医院联系人姓名</label>
+              <p><input type="text" class="am-form-field am-radius" name="hospitalContact" th:value="${model.hospitalContact}" /></p>
+            <label for="doc-ta-1">医院联系人电话</label>
+              <p><input type="text" class="am-form-field am-radius" name="hospitalTel" th:value="${model.hospitalTel}" /></p>
+      			<label for="doc-ta-1">产品型号</label>
+      				<p><input type="text" class="am-form-field am-radius" name="productModel" th:value="${model.productModel}" /></p> 
+      			<label for="doc-ta-1">产品序列号</label>
+      				<p><input type="text" class="am-form-field am-radius" name="serialNumber" th:value="${model.serialNumber}" /></p>
+      			<label for="doc-ta-1">当前标本量统计</label>
+      				<p><input type="text" class="am-form-field am-radius" name="currentSampleCount" th:value="${model.currentSampleCount}" /></p>
+      			<label for="doc-ta-1">标本盒种类</label>
+      				<p><input type="text" class="am-form-field am-radius" name="sampleBoxType" th:value="${model.sampleBoxType}" /></p>
+      			<label for="doc-ta-1">试剂种类</label>
+      				<p><input type="text" class="am-form-field am-radius" name="reagentType" th:value="${model.reagentType}" /></p>
+
+            <!--MYSQL中的tinyint类型取出来，如果是0则取出来是false，如果是1则取出来是true-->
+            <label for="doc-ta-1">是否过保</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isInsuranced" checked>
+                    <p th:text="${model.isInsuranced}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">仪器主机是否处理</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isInstrument" checked>
+                    <p th:text="${model.isInstrument}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">计算机是否处理</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isComputer" checked>
+                    <p th:text="${model.isComputer}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">显微镜是否处理</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isMicroscope" checked>
+                    <p th:text="${model.isMicroscope}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">泵阀是否处理</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isPump" checked>
+                    <p th:text="${model.isPump}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">机械臂是否处理</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isArm" checked>
+                    <p th:text="${model.isArm}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">搅拌部分是否处理</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isStir" checked>
+                    <p th:text="${model.isStir}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">金标部分是否处理</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isGold" checked>
+                    <p th:text="${model.isGold}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">送样部分是否处理</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isSample" checked>
+                    <p th:text="${model.isSample}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">计算机视频采集卡驱动是否正常</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isComputer1" checked>
+                    <p th:text="${model.isComputer1}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">显微镜相机驱动是否正常</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isComputer2" checked>
+                    <p th:text="${model.isComputer2}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">显微镜焦距是否正常</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isMicroscope1" checked>
+                    <p th:text="${model.isMicroscope1}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">显微镜上下左右前后是否正常</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isMicroscope2" checked>
+                    <p th:text="${model.isMicroscope2}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">显微镜皮带松紧度是否合适</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isMicroscope3" checked>
+                    <p th:text="${model.isMicroscope3}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">摄像头性状图像是否清晰</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isCamera1" checked>
+                    <p th:text="${model.isCamera1}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">摄像头金标图像是否清晰</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isCamera2" checked>
+                    <p th:text="${model.isCamera2}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">计数池内是否有异物</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isCountpool1" checked>
+                    <p th:text="${model.isCountpool1}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">计数池通道污点是否清除</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isCountpool2" checked>
+                    <p th:text="${model.isCountpool2}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">计数池表面是否有划痕</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isCountpool3" checked>
+                    <p th:text="${model.isCountpool3}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">取样臂运行是否正常</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isArm1" checked>
+                    <p th:text="${model.isArm1}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">取样臂左右前后上下移动是否正常</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isArm2" checked>
+                    <p th:text="${model.isArm2}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">取样臂外壁是否干净</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isArm3" checked>
+                    <p th:text="${model.isArm3}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">取样臂探入标本盒深度是否合适</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isArm4" checked>
+                    <p th:text="${model.isArm4}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">滴样位置是否正确</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isLiquid1" checked>
+                    <p th:text="${model.isLiquid1}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">滴样是否正常</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isLiquid2" checked>
+                    <p th:text="${model.isLiquid2}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">送样传动部件声音是否正常</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isSample1" checked>
+                    <p th:text="${model.isSample1}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+            <label for="doc-ta-1">送样运行是否平稳</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isSample2" checked>
+                    <p th:text="${model.isSample2}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+    			  <label for="doc-ta-1">低倍上下</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software1" th:value="${model.software1}" /></p>
+      			<label for="doc-ta-1">低倍左右</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software2" th:value="${model.software2}" /></p>
+      			<label for="doc-ta-1">低倍前后</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software3" th:value="${model.software3}" /></p>
+      			<label for="doc-ta-1">低倍白平衡</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software4" th:value="${model.software4}" /></p>
+      			<label for="doc-ta-1">低倍伽马值</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software5" th:value="${model.software5}" /></p> 
+      			<label for="doc-ta-1">低倍曝光值</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software6" th:value="${model.software6}" /></p> 
+      			<label for="doc-ta-1">高倍上下</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software7" th:value="${model.software7}" /></p> 
+      			<label for="doc-ta-1">高倍左右</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software8" th:value="${model.software8}" /></p>
+      			<label for="doc-ta-1">高倍前后</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software9" th:value="${model.software9}" /></p>
+      			<label for="doc-ta-1">高倍白平衡</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software10" th:value="${model.software10}" /></p>
+      			<label for="doc-ta-1">高倍伽马值</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software11" th:value="${model.software11}" /></p>
+      			<label for="doc-ta-1">高倍曝光值</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software12" th:value="${model.software12}" /></p>
+      			<label for="doc-ta-1">镜检红细胞</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software13" th:value="${model.software13}" /></p>
+      			<label for="doc-ta-1">镜检白细胞</label>
+      				<p><input type="text" class="am-form-field am-radius" name="software14" th:value="${model.software14}" /></p>
+            <label for="doc-ta-1">镜检虫卵</label>
+              <p><input type="text" class="am-form-field am-radius" name="software15" th:value="${model.software15}" /></p> 
+            <label for="doc-ta-1">镜检结果准确率</label>
+              <p><input type="text" class="am-form-field am-radius" name="software16" th:value="${model.software16}" /></p> 
+            <label for="doc-ta-1">整机测试重新断电开机</label>
+              <p><input type="text" class="am-form-field am-radius" name="machine1" th:value="${model.machine1}" /></p>
+            <label for="doc-ta-1">深度冲洗</label>
+              <p><input type="text" class="am-form-field am-radius" name="machine2" th:value="${model.machine2}" /></p>
+            <label for="doc-ta-1">备注</label>
+              <p><input type="text" class="am-form-field am-radius" name="remarks" th:value="${model.remarks}" /></p>
+      			<label for="doc-ta-1">--END--</label>
+      			<br>
+    		</div>
+    	</fieldset>
+	</form>
+</div>
+<!-- </div> -->
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="/assets/js/amazeui.min.js"></script>
+	<script src="/assets/js/app.js"></script>
+</body>
+</html>
