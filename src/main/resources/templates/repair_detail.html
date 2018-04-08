@@ -9,26 +9,114 @@
 	<title>后台管理</title>
 </head>
 <body>
-	repair详情页
-	<div th:text="${model.id}"></div>
-	<br/>
-	<div th:text="${model.engineer}"></div>
-
-
 <!--添加下面两个div 以给页面添加滑动条！！！-->
 <div class="admin-content">
-<div class="admin-content-body">
+<!-- <div class="admin-content-body"> -->
 	<form class="am-form" method="post" enctype="multipart/form-data" action="#">
   		<fieldset>
-    	<legend>工单详情</legend>
+    	<legend>维修工单详情</legend>
     		<div class="am-form-group">
+      			<label for="doc-ta-1">id</label>
+      				<p><input type="text" class="am-form-field am-radius" name="id" th:value="${model.id}" /></p> <!--去掉p标签的话行之间就太挤了-->
+      			<label for="doc-ta-1">工单编号</label>
+      				<p><input type="text" class="am-form-field am-radius" name="orderNumber" th:value="${model.orderNumber}" /></p>
       			<label for="doc-ta-1">工程师</label>
-      			<p><input type="engineer" class="am-form-field am-radius" placeholder=""  name="title" th:value="${model.engineer}" /></p>  
+      				<p><input type="text" class="am-form-field am-radius" name="engineer" th:value="${model.engineer}" /></p>
+      			<label for="doc-ta-1">工程师电话</label>
+      				<p><input type="text" class="am-form-field am-radius" name="engineerTel" th:value="${model.engineerTel}" /></p> 
+      			<label for="doc-ta-1">工单状态</label>
+      				<p><input type="text" class="am-form-field am-radius" name="status" th:value="${model.status}" /></p>
+      			<label for="doc-ta-1">医院申请时间</label>
+      				<p><input type="text" class="am-form-field am-radius" name="applyTime" th:value="${model.applyTime}" /></p> 
+      			<label for="doc-ta-1">医院期望维修时间</label>
+      				<p><input type="text" class="am-form-field am-radius" name="expectTime" th:value="${model.expectTime}" /></p>
+      			<label for="doc-ta-1">派单时间</label>
+      				<p><input type="text" class="am-form-field am-radius" name="dealTime" th:value="${model.dealTime}" /></p>
+      			<label for="doc-ta-1">预计到达时间</label>
+      				<p><input type="text" class="am-form-field am-radius" name="estimatedArrivalTime" th:value="${model.estimatedArrivalTime}" /></p> 
+      			<label for="doc-ta-1">实际到达时间</label>
+      				<p><input type="text" class="am-form-field am-radius" name="arrivaledTime" th:value="${model.arrivaledTime}" /></p> 
+      			<label for="doc-ta-1">工单完成时间</label>
+      				<p><input type="text" class="am-form-field am-radius" name="finishedTime" th:value="${model.finishedTime}" /></p> 
+      			<label for="doc-ta-1">医院名称</label>
+      				<p><input type="text" class="am-form-field am-radius" name="hospitalName" th:value="${model.hospitalName}" /></p>
+      			<label for="doc-ta-1">医院联系人</label>
+      				<p><input type="text" class="am-form-field am-radius" name="hospitalContact" th:value="${model.hospitalContact}" /></p>
+      			<label for="doc-ta-1">医院联系人电话</label>
+      				<p><input type="text" class="am-form-field am-radius" name="hospitalTel" th:value="${model.hospitalTel}" /></p> 
+      			<label for="doc-ta-1">产品名称</label>
+      				<p><input type="text" class="am-form-field am-radius" name="productName" th:value="${model.productName}" /></p> 
+      			<label for="doc-ta-1">产品型号</label>
+      				<p><input type="text" class="am-form-field am-radius" name="productModel" th:value="${model.productModel}" /></p> 
+      			<label for="doc-ta-1">产品序列号</label>
+      				<p><input type="text" class="am-form-field am-radius" name="serialNumber" th:value="${model.serialNumber}" /></p>
+      			<label for="doc-ta-1">产品版本</label>
+      				<p><input type="text" class="am-form-field am-radius" name="productVersion" th:value="${model.productVersion}" /></p>
+      			<label for="doc-ta-1">医院提交的故障描述</label>
+      				<textarea class="am-form-field am-radius" name="hospitalErrorDescribe" th:value="${model.hospitalErrorDescribe}"></textarea>
+      			<label for="doc-ta-1">装机日期</label>
+      				<p><input type="text" class="am-form-field am-radius" name="installDate" th:value="${model.installDate}" /></p>
+
+            <!--MYSQL中的tinyint类型取出来，如果是0则取出来是false，如果是1则取出来是true-->
+      			<label for="doc-ta-1">是否过保</label>
+              <div class="am-radio">
+                <label>
+                  <input type="radio" name="isInsuranced" checked>
+                    <p th:text="${model.isInsuranced}?'是':'否'"></p>
+                  </input>
+                </label>  
+              </div>
+    			  <label for="doc-ta-1">是否返厂</label>
+             <div class="am-radio">
+                <label>
+                  <input type="radio" name="isReturnFactory" checked>
+                    <p th:text="${model.isReturnFactory}?'是':'否'"></p>
+                  </input>
+                </label>  
+             </div>
+    			  <label for="doc-ta-1">是否更换过新机</label>
+             <div class="am-radio">
+                <label>
+                  <input type="radio" name="isReplaceProduct" checked>
+                    <p th:text="${model.isReplaceProduct}?'是':'否'"></p>
+                  </input>
+                </label>  
+             </div>
+    		  	<label for="doc-ta-1">当前标本量统计</label>
+      				<p><input type="text" class="am-form-field am-radius" name="currentSampleCount" th:value="${model.currentSampleCount}" /></p>
+      			<label for="doc-ta-1">标本盒种类</label>
+      				<p><input type="text" class="am-form-field am-radius" name="sampleBoxType" th:value="${model.sampleBoxType}" /></p>
+      			<label for="doc-ta-1">试剂种类</label>
+      				<p><input type="text" class="am-form-field am-radius" name="reagentType" th:value="${model.reagentType}" /></p>
+      			<label for="doc-ta-1">错误种类</label>
+      				<p><input type="text" class="am-form-field am-radius" name="errorType" th:value="${model.errorType}" /></p>
+      			<label for="doc-ta-1">故障现象</label>
+      				<p><input type="text" class="am-form-field am-radius" name="phenomenon" th:value="${model.phenomenon}" /></p> 
+      			<label for="doc-ta-1">故障原因</label>
+      				<p><input type="text" class="am-form-field am-radius" name="reason" th:value="${model.reason}" /></p> 
+      			<label for="doc-ta-1">解决方案</label>
+      				<p><input type="text" class="am-form-field am-radius" name="solution" th:value="${model.solution}" /></p> 
+      			<label for="doc-ta-1">更换备件名称及编号</label>
+      				<p><input type="text" class="am-form-field am-radius" name="replaceNameCode" th:value="${model.replaceNameCode}" /></p>
+      			<label for="doc-ta-1">原备件名称及编号</label>
+      				<p><input type="text" class="am-form-field am-radius" name="originalNameCode" th:value="${model.originalNameCode}" /></p>
+      			<label for="doc-ta-1">仪器状况</label>
+      				<p><input type="text" class="am-form-field am-radius" name="productCondition" th:value="${model.productCondition}" /></p>
+      			<label for="doc-ta-1">备注</label>
+      				<p><input type="text" class="am-form-field am-radius" name="orderRemarks" th:value="${model.orderRemarks}" /></p>
+      			<label for="doc-ta-1">维修价格</label>
+      				<p><input type="text" class="am-form-field am-radius" name="price" th:value="${model.price}" /></p>
+      			<label for="doc-ta-1">服务评价</label>
+      				<p><input type="text" class="am-form-field am-radius" name="serviceRating" th:value="${model.serviceRating}" /></p>
+      			<label for="doc-ta-1">医院投诉内容</label>
+      				<p><input type="text" class="am-form-field am-radius" name="hospitalComplaint" th:value="${model.hospitalComplaint}" /></p>
+      			<label for="doc-ta-1">--END--</label>
+      			<br>
     		</div>
     	</fieldset>
 	</form>
 </div>
-</div>
+<!-- </div> -->
 
 	<!--[if (gte IE 9)|!(IE)]><!-->
 	<script src="/assets/js/jquery.min.js"></script>

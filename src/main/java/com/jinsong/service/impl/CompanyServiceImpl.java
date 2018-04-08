@@ -153,4 +153,52 @@ public class CompanyServiceImpl implements CompanyService {
 		return maintainMapper.selectAll();
 	}
 
+	@Override
+	public Install selectInstallById(long id) {
+		// TODO Auto-generated method stub
+		return installMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public Maintain selectMaintainById(long id) {
+		// TODO Auto-generated method stub
+		return maintainMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public long deleteRepairById(long id) {
+		// TODO Auto-generated method stub
+		return repairMapper.deleteByPrimaryKey(id)>0?1:0;
+	}
+
+	@Override
+	public long deleteInstallById(long id) {
+		// TODO Auto-generated method stub
+		return installMapper.deleteByPrimaryKey(id)>0?1:0;
+	}
+
+	@Override
+	public long deleteMaintainById(long id) {
+		// TODO Auto-generated method stub
+		return maintainMapper.deleteByPrimaryKey(id)>0?1:0;
+	}
+
+	@Override
+	public List<Repair> selectRepairBySearch(String searchInfo) {
+		// TODO Auto-generated method stub
+		return repairMapper.selectBySearch(searchInfo);
+	}
+
+	@Override
+	public List<Install> selectInstallBySearch(String searchInfo) {
+		// TODO Auto-generated method stub
+		return installMapper.selectBySearch(searchInfo);
+	}
+
+	@Override
+	public List<Maintain> selectMaintainBySearch(String searchInfo) {
+		// TODO Auto-generated method stub
+		return maintainMapper.selectBySearch(searchInfo);
+	}
+
 }

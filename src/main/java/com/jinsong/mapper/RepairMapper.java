@@ -61,4 +61,9 @@ public interface RepairMapper {
      * 获得status=null也就是“未处理”的repair工单
      */
     List<Repair> selectByStautsNull();
+    
+    /**
+     * 通过hospital_name或者engineer来搜索repair工单
+     */
+    List<Repair> selectBySearch(String searchInfo);
 }

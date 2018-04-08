@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <style>
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 200%;
+      color: #333;
+      margin-top: 30px;
+    }
+    .header p {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="am-g">
+    <h1>搜索工单</h1>
+    
+  </div>
+  <hr />
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    
+
+    <form method="post" class="am-form" action="/web/order/search">
+      <label for="text">请输入医院名称或者工程师姓名</label>
+      <input type="text" name="searchInfo" id="searchInfo" value="">
+      <br>
+      
+      
+      <br />
+      <div class="am-cf">
+        <input type="submit" name="" value="确认" class="am-btn am-btn-primary am-btn-sm am-fl">
+        
+      </div>
+    </form>
+
+    <hr>
+    
+    
+  </div>
+</div>
+</body>
+</html>

@@ -46,8 +46,19 @@
 						<td th:text="${sk.status}">status</td>
 						<td th:text="${sk.serviceRating}">service_rating</td>
 						<td>
-							<a class="btn btn-info" th:href="@{/web/repair/{id}/detail(id=${sk.id})}">详情页</a>
-							<a class="btn btn-danger" th:href="@{/web/repair/{id}/delete(id=${sk.id})}">删除</a>
+							<a class="btn btn-info" th:href="@{/web/repair/{id}(id=${sk.id})}">详情页</a>
+							<!--
+								a标签只能发送PUT请求，为了REST风格
+								这里通过JS使点击a标签发送DELETE请求
+								a标签的id里存储URL信息
+							-->
+							<a class="btn btn-danger" th:id="@{/web/repair/{id}(id=${sk.id})}"  onclick="javascript:
+								if(confirm('确定要删除此内容吗？')){
+									myDelete(this);
+									return true;
+								}
+								return false;">删除
+							</a>
 						</td>
 					</tr>
 						
@@ -100,7 +111,28 @@
 		</ul>
 	</nav>
 
-
+	<!--
+		a标签只能发送PUT请求，
+		这里通过JS使点击a标签发送DELETE请求
+		a标签的id里存储URL信息
+	-->
+	<script type="text/javascript">
+		function myDelete(node){
+			var url =node.id;
+			$.ajax({
+				url:url,
+				type:"DELETE",
+				success:function(res){
+					if(res){
+						window.location.reload();
+						alert("删除成功");
+					}else{
+						alert("删除失败");
+					}
+				}
+			})
+		}
+	</script>
 
 
 

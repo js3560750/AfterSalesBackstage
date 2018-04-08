@@ -42,7 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.and()
 				.authorizeRequests()	//下面是设置权限
-					.antMatchers("/web/authentication/require", 
+					.antMatchers(
+							"/web/authentication/require", 
 							"/web/login", 
 							"/assets/**",
 							"/hello").permitAll() // web/login不会被拦截，同时静态资源static目录下的assets文件夹也不会被拦截

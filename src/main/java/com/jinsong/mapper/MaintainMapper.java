@@ -1,6 +1,7 @@
 package com.jinsong.mapper;
 
 import com.jinsong.model.Maintain;
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -46,4 +47,9 @@ public interface MaintainMapper {
      * @mbg.generated Tue Feb 13 15:45:39 CST 2018
      */
     int updateByPrimaryKey(Maintain record);
+    
+    /**
+     * 通过hospital_name或者engineer来搜索repair工单
+     */
+    List<Maintain> selectBySearch(String searchInfo);
 }

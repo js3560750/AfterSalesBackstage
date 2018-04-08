@@ -220,4 +220,10 @@
 		where status = '未处理'
 		order by id desc
 	</select>
+	<select id="selectBySearch" resultMap="BaseResultMap">
+		select *
+		from repair
+		where hospital_name like "%"#{searchInfo}"%" or engineer like "%"#{searchInfo}"%"
+		order by id desc
+	</select>
 </mapper>

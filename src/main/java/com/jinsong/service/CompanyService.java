@@ -62,4 +62,44 @@ public interface CompanyService {
 	 */
 	List<Maintain> selectAllMaintain();
 	
+	/**
+	 *根据id获得单个install工单
+	 */
+	Install selectInstallById(long id);
+	
+	/**
+	 *根据id获得单个maintain工单
+	 */
+	Maintain selectMaintainById(long id);
+	
+	/**
+	 * 根据id删除repair
+	 */
+	long deleteRepairById(long id);
+	
+	/**
+	 * 根据id删除install
+	 */
+	long deleteInstallById(long id);
+	
+	/**
+	 * 根据id删除maintain
+	 */
+	long deleteMaintainById(long id);
+	
+	/**
+     * 通过hospital_name或者engineer来搜索repair工单
+     */
+	List<Repair> selectRepairBySearch(String searchInfo);
+	
+	/**
+     * 通过hospital_name或者engineer来搜索install工单
+     */
+	List<Install> selectInstallBySearch(String searchInfo);
+	
+	/**
+     * 通过hospital_name或者engineer来搜索maintain工单
+     */
+	List<Maintain> selectMaintainBySearch(String searchInfo);
+	
 }
