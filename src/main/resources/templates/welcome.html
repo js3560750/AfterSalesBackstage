@@ -6,7 +6,8 @@
 </head>
 <body>
 	<p align="center"> <font style="font-size: 30px">Welcome !</font></p>
-	<a th:href="@{'https://www.baidu'+'.com'}">外链接测试1</a>
-	<a th:href="@{https://www.baidu.com}">外链接测试2</a>
+	
+	<font>您当前的权限是：<p style="color:red" th:text="${authority}"></p></font>
+	<p>备注：ROLE_ADMIN权限可以操作所有页面；ROLE_USER权限只能新增和修改。点击删除时不会有效果 </p>
 </body>
 </html>

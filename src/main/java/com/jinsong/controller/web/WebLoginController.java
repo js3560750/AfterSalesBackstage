@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -75,7 +76,7 @@ public class WebLoginController {
 	@GetMapping("/index")
 	public ModelAndView loginSuccess() {
 		ModelAndView model = new ModelAndView("index"); // 返回index.html页面
-
+		
 		return model;
 	}
 	
@@ -85,7 +86,9 @@ public class WebLoginController {
 	@GetMapping("/welcome")
 	public ModelAndView welcome() {
 		ModelAndView model = new ModelAndView("welcome"); // 返回welcome.html页面
-
+		String authority =SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
+		System.out.println(authority);
+		model.addObject("authority", authority);
 		return model;
 	}
 

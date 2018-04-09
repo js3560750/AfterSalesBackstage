@@ -224,6 +224,7 @@ public class CompanyServiceImpl implements CompanyService {
 		factory.setGmtCreate(date);
 		factory.setGmtModified(date);
 		factory.setTime(date);
+		
 
 		return factoryMapper.insert(factory) > 0 ? factory.getId() : 0;
 	}
@@ -269,6 +270,7 @@ public class CompanyServiceImpl implements CompanyService {
 		Date date = new Date();
 		product.setGmtCreate(date);
 		product.setGmtModified(date);
+		product.setShipDate(date);
 		product.setStatusChangeTime(date);
 		product.setStatusOperator("管理员");
 

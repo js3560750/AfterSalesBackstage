@@ -63,6 +63,11 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public long insertAdmin(Admin admin) {
+		
+		Date date = new Date(new java.util.Date().getTime());
+		admin.setGmtCreate(date);
+		admin.setGmtModified(date);
+		
 		//密码加密后存入数据库
 		admin.setPassword(passwordEncoder.encode(admin.getPassword()));
 		
