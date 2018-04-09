@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- 新 Bootstrap 核心 CSS 文件 CDN联网版-->
+<!-- <link
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"> -->
+	<!--新 Bootstrap 核心 CSS 文件 本地版-->
+	<link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<title>后台管理</title>
+</head>
+<body>
+	<div class="container">
+		<div  class="panel panel-default" style="margin-top: 100px">
+			
+				<p align="center"> <font style="font-size: 30px">提交成功 !</font></p>
+				<div style="text-align: center;margin:20px">
+					<a class="btn btn-info" th:href="@{/web/product}">继续添加</a>
+					<a class="btn btn-info" th:href="@{/web/product/list}">查看所有</a>
+				</div>
+
+		</div>
+		
+	</div>
+	
+	
+
+	<!--本地版本-->
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="/bootstrap-3.3.7-dist/jquery-2.1.1/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

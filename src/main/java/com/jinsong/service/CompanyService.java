@@ -8,7 +8,9 @@ import com.jinsong.model.Engineer;
 import com.jinsong.model.Factory;
 import com.jinsong.model.Install;
 import com.jinsong.model.Maintain;
+import com.jinsong.model.Product;
 import com.jinsong.model.Repair;
+import com.jinsong.model.Error;
 
 @Service
 public interface CompanyService {
@@ -132,5 +134,52 @@ public interface CompanyService {
      * 通过serial_number来搜索factory
      */
 	List<Factory> selectFactoryBySearch(String searchInfo);
+	
+	/**
+	 * 售后部门添加设备信息product
+	 */
+	long insertProduct(Product product);
+	
+	/**
+	 * 根据id修改质售后部门设备信息product
+	 */
+	long updateProduct(Product product);
+	
+	/**
+	 * 获得所有售后部门设备信息product
+	 */
+	List<Product> selectAllProduct();
+	
+	/**
+	 * 根据id删除售后部门设备信息product
+	 */
+	long deleteProductById(long id);
+	
+	/**
+	 * 根据id获得单个售后部门设备信息product
+	 */
+	Product selectProductById(long id);
+	
+	/**
+     * 通过serial_number和hospital_name来搜索product
+     */
+	List<Product> selectProductBySearch(String searchInfo);
+	
+	
+	/**
+	 * 添加设备故障信息error
+	 */
+	long insertError(Error error);
+	
+	/**
+	 * 获得所有error信息
+	 */
+	List<Error> selectAllError();
+	
+	/**
+	 * 根据id删除单个error信息
+	 *
+	 */
+	long deleteErrorById(long id);
 	
 }

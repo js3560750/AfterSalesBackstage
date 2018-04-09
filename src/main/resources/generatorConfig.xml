@@ -63,7 +63,7 @@
 
 		
 		<!-- 选择要自动生成的表名，填%代表所有表都生成 -->
-        <table tableName="factory" >
+        <table tableName="product" >
             <!--mysql 配置-->
             <generatedKey column="id" sqlStatement="Mysql" identity="true" />
             <!--oracle 配置-->

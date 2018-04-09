@@ -1,6 +1,8 @@
 package com.jinsong.mapper;
 
 import com.jinsong.model.Engineer;
+import com.jinsong.model.Factory;
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -52,4 +54,9 @@ public interface EngineerMapper {
      * @return
      */
     Engineer selectByName(String engineer);
+    
+    /**
+     * 通过姓名来搜索engineer
+     */
+    List<Engineer> selectBySearch(String searchInfo);
 }

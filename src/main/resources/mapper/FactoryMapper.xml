@@ -149,11 +149,11 @@
     from factory
   </select>
   <select id="selectBySearch" resultMap="BaseResultMap">
-		select *
-		from factory
-		where
-		serial_number like "%"#{searchInfo}"%"
-		order
-		by id desc
-	</select>
+	select *
+	from factory
+	where
+	serial_number like "%"#{searchInfo}"%"
+	order
+	by id desc
+  </select>
 </mapper>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<!--AmazingUI -->
+	<link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" href="/assets/css/admin.css">
+	<title>后台管理</title>
+</head>
+<body>
+	<!--添加下面两个div 以给页面添加滑动条！！！-->
+	<div class="admin-content">
+		<div class="admin-content-body">
+			<form class="am-form" method="post" enctype="multipart/form-data" action="/web/admin">
+				<fieldset>
+					<legend>管理员信息</legend>
+					<div class="am-form-group">
+						<label for="doc-ta-1">账号</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="account" /></p>
+						<label for="doc-ta-1">密码</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="password" /></p>
+						<label for="doc-ta-1">权限</label>
+						<p>提示：普通用户权限不能添加、修改和删除管理员或者工程师，也不能删除工单、设备信息</p>
+						<div class="am-radio">
+							<label>
+								<input type="radio" name="authority" value="ROLE_ADMIN">
+								全局超级权限
+							</label>
+						</div>
+
+						<div class="am-radio">
+							<label>
+								<input type="radio" name="authority" value="ROLE_USER" checked>
+								普通用户权限
+							</label>
+						</div>
+					</div>
+					<p><button type="submit" class="am-btn am-btn-primary">提交</button></p>
+				</fieldset>
+			</form>
+
+
+		</div>
+	</div>
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="/assets/js/amazeui.min.js"></script>
+	<script src="/assets/js/app.js"></script>
+</body>
+</html>

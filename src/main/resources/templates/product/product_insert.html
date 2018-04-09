@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<!--AmazingUI -->
+	<link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" href="/assets/css/admin.css">
+	<title>后台管理</title>
+</head>
+<body>
+	<!--添加下面两个div 以给页面添加滑动条！！！-->
+	<div class="admin-content">
+		<div class="admin-content-body">
+			<form class="am-form" method="post" enctype="multipart/form-data" action="/web/product">
+				<fieldset>
+					<legend>登记设备发货信息</legend>
+					<div class="am-form-group">
+						<label for="doc-ta-1">产品序列号</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="serialNumber" /></p>
+						<label for="doc-ta-1">产品名称</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="productName" /></p>
+						<label for="doc-ta-1">产品型号</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="productModel" /></p>
+						<label for="doc-ta-1">产品类型</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="productType" /></p>
+						<label for="doc-ta-1">医院名称</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="hospitalName" /></p>
+						<label for="doc-ta-1">医院地址</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="hospitalAddress" /></p>
+						<label for="doc-ta-1">医院科室</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="hospitalDepartment" /></p>
+						<label for="doc-ta-1">医院联系人姓名</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="hospitalContact" /></p>
+						<label for="doc-ta-1">医院联系人电话</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="hospitalTel" /></p>
+						<label for="doc-ta-1">仪器状态（请输入“库管”或“已安装”或“维修”或“保养”或“返厂”或“报废”）</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="status" /></p>
+						<label for="doc-ta-1">所在的大区</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="region" /></p>
+						<label for="doc-ta-1">所在的省</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="province" /></p>
+						<label for="doc-ta-1">所在的市</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="city" /></p>
+						<label for="doc-ta-1">所在的区、县</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="district" /></p>
+						<label for="doc-ta-1">发货日期</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="shipDate" /></p>
+						<label for="doc-ta-1">备注</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="remarks" /></p>
+					</div>
+					<p><button type="submit" class="am-btn am-btn-primary">提交</button></p>
+				</fieldset>
+			</form>
+
+
+		</div>
+	</div>
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="/assets/js/amazeui.min.js"></script>
+	<script src="/assets/js/app.js"></script>
+</body>
+</html>

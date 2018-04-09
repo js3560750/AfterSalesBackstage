@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<!--AmazingUI -->
+	<link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" href="/assets/css/admin.css">
+	<title>后台管理</title>
+</head>
+<body>
+	<!--添加下面两个div 以给页面添加滑动条！！！-->
+	<div class="admin-content">
+		<div class="admin-content-body">
+			<form class="am-form" method="post" enctype="multipart/form-data" action="/web/engineer">
+				<fieldset>
+					<legend>添加工程师</legend>
+					<p>如需修改，请删除现有工程师并添加新的工程师</p>
+					<div class="am-form-group">
+						<label for="doc-ta-1">工程师姓名</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="engineer" /></p>
+						<label for="doc-ta-1">工程师电话</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="tel" /></p>
+						<label for="doc-ta-1">工程师登录账号</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="account" /></p>
+						<label for="doc-ta-1">工程师登录密码</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入"  name="password" /></p>
+					</div>
+					<p><button type="submit" class="am-btn am-btn-primary">提交</button></p>
+				</fieldset>
+			</form>
+
+
+		</div>
+	</div>
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="/assets/js/amazeui.min.js"></script>
+	<script src="/assets/js/app.js"></script>
+</body>
+</html>

@@ -81,4 +81,12 @@
     from engineer
     where engineer=#{engineer}
   </select>
+  <select id="selectBySearch" resultMap="BaseResultMap">
+		select *
+		from engineer
+		where
+		engineer like "%"#{searchInfo}"%"
+		order
+		by id desc
+  </select>
 </mapper>

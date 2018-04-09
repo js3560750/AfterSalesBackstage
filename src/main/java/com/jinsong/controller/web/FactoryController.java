@@ -2,7 +2,6 @@ package com.jinsong.controller.web;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jinsong.model.Factory;
-import com.jinsong.model.Install;
-import com.jinsong.model.Maintain;
-import com.jinsong.model.Repair;
 import com.jinsong.service.CompanyService;
 import com.jinsong.util.JsUtil;
 

@@ -9,14 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jinsong.mapper.EngineerMapper;
+import com.jinsong.mapper.ErrorMapper;
 import com.jinsong.mapper.FactoryMapper;
 import com.jinsong.mapper.InstallMapper;
 import com.jinsong.mapper.MaintainMapper;
+import com.jinsong.mapper.ProductMapper;
 import com.jinsong.mapper.RepairMapper;
 import com.jinsong.model.Engineer;
+import com.jinsong.model.Error;
 import com.jinsong.model.Factory;
 import com.jinsong.model.Install;
 import com.jinsong.model.Maintain;
+import com.jinsong.model.Product;
 import com.jinsong.model.Repair;
 import com.jinsong.service.CompanyService;
 
@@ -37,6 +41,12 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Autowired
 	FactoryMapper factoryMapper;
+
+	@Autowired
+	ProductMapper productMapper;
+	
+	@Autowired
+	ErrorMapper errorMapper;
 
 	@Override
 	public long insertRepair(Repair repair) {
@@ -249,8 +259,72 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public List<Factory> selectFactoryBySearch(String searchInfo) {
-		// TODO Auto-generated method stub
+
 		return factoryMapper.selectBySearch(searchInfo);
+	}
+
+	@Override
+	public long insertProduct(Product product) {
+		// 日期
+		Date date = new Date();
+		product.setGmtCreate(date);
+		product.setGmtModified(date);
+		product.setStatusChangeTime(date);
+		product.setStatusOperator("管理员");
+
+		return productMapper.insert(product) > 0 ? product.getId() : 0;
+	}
+
+	@Override
+	public long updateProduct(Product product) {
+		// 日期
+		Date date = new Date();
+		product.setGmtModified(date);
+
+		// 更新，直接把新的传进来，会根据主键去更新对应的行
+		return productMapper.updateByPrimaryKey(product);
+	}
+
+	@Override
+	public List<Product> selectAllProduct() {
+		
+		return productMapper.selectAll();
+	}
+
+	@Override
+	public long deleteProductById(long id) {
+		
+		return productMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public Product selectProductById(long id) {
+		
+		return productMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<Product> selectProductBySearch(String searchInfo) {
+		
+		return productMapper.selectBySearch(searchInfo);
+	}
+
+	@Override
+	public long insertError(Error error) {
+		
+		return errorMapper.insert(error)>0?error.getId():0;
+	}
+
+	@Override
+	public List<Error> selectAllError() {
+		
+		return errorMapper.selectAll();
+	}
+
+	@Override
+	public long deleteErrorById(long id) {
+		
+		return errorMapper.deleteByPrimaryKey(id)>0?1:0;
 	}
 
 }

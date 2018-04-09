@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<!--AmazingUI -->
+	<link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" href="/assets/css/admin.css">
+	<title>后台管理</title>
+</head>
+<body>
+	<!--添加下面两个div 以给页面添加滑动条！！！-->
+	<div class="admin-content">
+		<div class="admin-content-body">
+			<form class="am-form" method="post" enctype="multipart/form-data" action="/web/admin">
+				<fieldset>
+					<legend>修改管理员信息</legend>
+					<div class="am-form-group">
+						<label for="doc-ta-1">账号</label>
+						<p><input type="text" class="am-form-field am-radius"  name="account" th:value="${model.account}" disabled/></p>
+						<label for="doc-ta-1">新密码</label>
+						<p><input type="text" class="am-form-field am-radius" placeholder="请输入新密码"  name="password" /></p>
+						<label for="doc-ta-1">权限</label>
+						<div class="am-radio">
+							<label>
+								<input type="radio" name="authority" value="ROLE_ADMIN">
+								全局超级权限
+							</label>
+						</div>
+
+						<div class="am-radio">
+							<label>
+								<input type="radio" name="authority" value="ROLE_USER" checked>
+								普通用户权限
+							</label>
+						</div>
+					</div>
+
+					<input type="hidden" name="id" th:value="${model.id}">
+					<input type="hidden" name="gmtCreate" th:value="${model.gmtCreate}">
+						<!--
+						 *form表单只能用GET和POST方式
+						 * 
+						 * 但如果我们在表单内添加一个隐藏的input标签如下
+						 * <input type="hidden" name="_method" value="put" />
+						 * 并且表单提交仍然写POST
+						 * 
+						 * Springboot会自动识别这个隐藏input，并调用PUT方式的Controller方法来接受
+						-->
+					<input type="hidden" name="_method" value="put" />
+					<p><button type="submit" class="am-btn am-btn-primary">提交</button></p>
+				</fieldset>
+			</form>
+
+
+		</div>
+	</div>
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="/assets/js/amazeui.min.js"></script>
+	<script src="/assets/js/app.js"></script>
+</body>
+</html>
