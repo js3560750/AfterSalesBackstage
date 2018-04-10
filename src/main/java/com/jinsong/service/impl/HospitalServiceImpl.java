@@ -130,6 +130,12 @@ public class HospitalServiceImpl implements HospitalService {
 		return repairMapper.updateByPrimaryKey(repair)>0?repair.getId():0;
 	}
 
+	@Override
+	public List<Repair> selectUnfinishByOpenid(String openid) {
+		
+		return repairMapper.selectUnfinishByOpenid(openid);
+	}
+
 	
 
 }

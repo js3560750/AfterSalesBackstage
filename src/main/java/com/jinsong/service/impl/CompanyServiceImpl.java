@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.jinsong.mapper.AdminMapper;
 import com.jinsong.mapper.EngineerMapper;
 import com.jinsong.mapper.ErrorMapper;
 import com.jinsong.mapper.FactoryMapper;
@@ -15,6 +17,7 @@ import com.jinsong.mapper.InstallMapper;
 import com.jinsong.mapper.MaintainMapper;
 import com.jinsong.mapper.ProductMapper;
 import com.jinsong.mapper.RepairMapper;
+import com.jinsong.model.Admin;
 import com.jinsong.model.Engineer;
 import com.jinsong.model.Error;
 import com.jinsong.model.Factory;
@@ -44,9 +47,32 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Autowired
 	ProductMapper productMapper;
-	
+
 	@Autowired
 	ErrorMapper errorMapper;
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
+	@Autowired
+	AdminMapper adminMapper;
+
+	@Override
+	public long companyLogin(String account, String password) {
+		Admin admin = adminMapper.selectByAccount(account);
+
+		if (!passwordEncoder.matches(password, admin.getPassword())) {
+			// 密码不对
+			return -1;
+		} else if (!admin.getAuthority().equals("ROLE_ADMIN")) {// String类型的比较要用equals！！！！！String类型==比较的是地址
+			// 权限不对
+			return -2;
+		} else {
+			// 都对了
+			return 1;
+		}
+
+	}
 
 	@Override
 	public long insertRepair(Repair repair) {
@@ -67,6 +93,11 @@ public class CompanyServiceImpl implements CompanyService {
 
 		// 订单状态
 		repair.setStatus("已受理");
+
+		// 工程师电话
+		String engineerName = repair.getEngineer();
+		Engineer engineer = engineerMapper.selectByName(engineerName);
+		repair.setEngineerTel(engineer.getTel());
 
 		return repairMapper.insert(repair) > 0 ? repair.getId() : 0;
 	}
@@ -90,6 +121,11 @@ public class CompanyServiceImpl implements CompanyService {
 		// 订单状态
 		maintain.setStatus("已受理");
 
+		// 工程师电话
+		String engineerName = maintain.getEngineer();
+		Engineer engineer = engineerMapper.selectByName(engineerName);
+		maintain.setEngineerTel(engineer.getTel());
+
 		return maintainMapper.insert(maintain) > 0 ? maintain.getId() : 0;
 	}
 
@@ -111,6 +147,11 @@ public class CompanyServiceImpl implements CompanyService {
 
 		// 订单状态
 		install.setStatus("已受理");
+
+		// 工程师电话
+		String engineerName = install.getEngineer();
+		Engineer engineer = engineerMapper.selectByName(engineerName);
+		install.setEngineerTel(engineer.getTel());
 
 		return installMapper.insert(install) > 0 ? install.getId() : 0;
 	}
@@ -154,6 +195,36 @@ public class CompanyServiceImpl implements CompanyService {
 		repair.setDealTime(new Date());
 
 		return repairMapper.updateByPrimaryKey(repair) > 0 ? repair.getId() : 0;
+	}
+	
+	@Override
+	public long updateInstallEngineer(long id, String engineerName) {
+		// 从数据库获得工程师电话
+		Engineer engineer = engineerMapper.selectByName(engineerName);
+		String tel = engineer.getTel();
+
+		// 更新Install的工程师姓名和电话、工单状态
+		Install install = installMapper.selectByPrimaryKey(id);
+		install.setEngineer(engineerName);
+		install.setEngineerTel(tel);
+		install.setGmtModified(new Date());
+
+		return installMapper.updateByPrimaryKey(install) > 0 ? install.getId() : 0;
+	}
+	
+	@Override
+	public long updateMaintainEngineer(long id, String engineerName) {
+		// 从数据库获得工程师电话
+		Engineer engineer = engineerMapper.selectByName(engineerName);
+		String tel = engineer.getTel();
+
+		// 更新Maintain的工程师姓名和电话、工单状态
+		Maintain maintain = maintainMapper.selectByPrimaryKey(id);
+		maintain.setEngineer(engineerName);
+		maintain.setEngineerTel(tel);
+		maintain.setGmtModified(new Date());
+
+		return maintainMapper.updateByPrimaryKey(maintain) > 0 ? maintain.getId() : 0;
 	}
 
 	@Override
@@ -224,7 +295,6 @@ public class CompanyServiceImpl implements CompanyService {
 		factory.setGmtCreate(date);
 		factory.setGmtModified(date);
 		factory.setTime(date);
-		
 
 		return factoryMapper.insert(factory) > 0 ? factory.getId() : 0;
 	}
@@ -289,44 +359,44 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public List<Product> selectAllProduct() {
-		
+
 		return productMapper.selectAll();
 	}
 
 	@Override
 	public long deleteProductById(long id) {
-		
+
 		return productMapper.deleteByPrimaryKey(id);
 	}
 
 	@Override
 	public Product selectProductById(long id) {
-		
+
 		return productMapper.selectByPrimaryKey(id);
 	}
 
 	@Override
 	public List<Product> selectProductBySearch(String searchInfo) {
-		
+
 		return productMapper.selectBySearch(searchInfo);
 	}
 
 	@Override
 	public long insertError(Error error) {
-		
-		return errorMapper.insert(error)>0?error.getId():0;
+
+		return errorMapper.insert(error) > 0 ? error.getId() : 0;
 	}
 
 	@Override
 	public List<Error> selectAllError() {
-		
+
 		return errorMapper.selectAll();
 	}
 
 	@Override
 	public long deleteErrorById(long id) {
-		
-		return errorMapper.deleteByPrimaryKey(id)>0?1:0;
+
+		return errorMapper.deleteByPrimaryKey(id) > 0 ? 1 : 0;
 	}
 
 }

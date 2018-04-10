@@ -51,4 +51,7 @@ public interface AdminMapper {
      * 根据用户名查找
      */
     Admin selectByAccount(String account);
+    
+    
+    
 }

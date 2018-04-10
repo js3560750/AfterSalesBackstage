@@ -226,4 +226,10 @@
 		where hospital_name like "%"#{searchInfo}"%" or engineer like "%"#{searchInfo}"%"
 		order by id desc
 	</select>
+	<select id="selectUnfinishByOpenid" resultMap="BaseResultMap">
+		select *
+		from repair
+		where openid =#{openid,jdbcType=VARCHAR} and status !='已完成'
+		order by id desc
+	</select>
 </mapper>

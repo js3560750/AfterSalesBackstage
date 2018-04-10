@@ -14,6 +14,11 @@ import com.jinsong.model.Error;
 
 @Service
 public interface CompanyService {
+	
+	/**
+	 * 微信公司端账号登录
+	 */
+	long companyLogin(String account,String password);
 
 	/**
 	 * 管理员提交新的repair工单
@@ -54,6 +59,16 @@ public interface CompanyService {
      * 更新repair工单的工程师信息
      */
     long updateRepairEngineer(long id,String engineer);
+    
+    /**
+     * 更新install工单的工程师信息
+     */
+    long updateInstallEngineer(long id,String engineer);
+    
+    /**
+     * 更新Maintain工单的工程师信息
+     */
+    long updateMaintainEngineer(long id,String engineer);
     
     /**
      * 获得所有install工单

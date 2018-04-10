@@ -87,7 +87,6 @@ public class WebLoginController {
 	public ModelAndView welcome() {
 		ModelAndView model = new ModelAndView("welcome"); // 返回welcome.html页面
 		String authority =SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
-		System.out.println(authority);
 		model.addObject("authority", authority);
 		return model;
 	}

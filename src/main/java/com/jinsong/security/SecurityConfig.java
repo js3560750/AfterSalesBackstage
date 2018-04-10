@@ -47,7 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 							"/web/authentication/require", 
 							"/web/login", 
 							"/assets/**",
-							"/hello").permitAll() // web/login不会被拦截，同时静态资源static目录下的assets文件夹也不会被拦截
+							"/hello",
+							"/weixin/**").permitAll() // web/login不会被拦截，同时静态资源static目录下的assets文件夹也不会被拦截
 					.antMatchers("/web/admin","/web/admin/*").hasRole("ADMIN")
 					.antMatchers(HttpMethod.DELETE,"/web/**").hasRole("ADMIN")
 					.anyRequest().authenticated() // 其他请求都要身份认证

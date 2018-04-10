@@ -4,6 +4,7 @@ import com.jinsong.model.Repair;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Mapper
 public interface RepairMapper {
@@ -66,4 +67,9 @@ public interface RepairMapper {
      * 通过hospital_name或者engineer来搜索repair工单
      */
     List<Repair> selectBySearch(String searchInfo);
+    
+    /**
+	 * 根据医生的微信昵称获取状态不等于“已完成”的订单
+	 */
+	List<Repair> selectUnfinishByOpenid(String openid);
 }
