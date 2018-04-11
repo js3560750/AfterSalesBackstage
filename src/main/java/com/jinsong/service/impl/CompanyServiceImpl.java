@@ -1,8 +1,12 @@
 package com.jinsong.service.impl;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,17 +63,39 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public long companyLogin(String account, String password) {
-		Admin admin = adminMapper.selectByAccount(account);
+		try {
+			Admin admin = adminMapper.selectByAccount(account);
+			if (!passwordEncoder.matches(password, admin.getPassword())) {
+				// 密码不对
+				return -1;
+			} else if (!admin.getAuthority().equals("ROLE_ADMIN")) {// String类型的比较要用equals！！！！！String类型==比较的是地址
+				// 权限不对
+				return -2;
+			} else {
+				// 都对了
+				return 1;
+			}
+		} catch (Exception e) {
+			// 用户名错误
+			return -3;
+		}
 
-		if (!passwordEncoder.matches(password, admin.getPassword())) {
-			// 密码不对
-			return -1;
-		} else if (!admin.getAuthority().equals("ROLE_ADMIN")) {// String类型的比较要用equals！！！！！String类型==比较的是地址
-			// 权限不对
-			return -2;
-		} else {
-			// 都对了
-			return 1;
+	}
+
+	@Override
+	public long engineerLogin(String account, String password) {
+		try {
+			Engineer engineer = engineerMapper.selectByAccount(account);
+			if (!engineer.getPassword().equals(password)) {
+				// 密码不对
+				return -1;
+			} else {
+				// 都对了
+				return 1;
+			}
+		} catch (Exception e) {
+			// 用户名错误
+			return -3;
 		}
 
 	}
@@ -82,6 +108,13 @@ public class CompanyServiceImpl implements CompanyService {
 		repair.setGmtCreate(date);
 		repair.setGmtModified(date);
 		repair.setDealTime(date);
+
+		// 获取当前时间后2天
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.DATE, +2);// 当前时间+2天
+		date = calendar.getTime();
+		repair.setEstimatedArrivalTime(date);
 
 		// 订单号
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
@@ -110,6 +143,13 @@ public class CompanyServiceImpl implements CompanyService {
 		maintain.setGmtCreate(date);
 		maintain.setGmtModified(date);
 
+		// 获取当前时间后2天
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.DATE, +2);// 当前时间+2天
+		date = calendar.getTime();
+		maintain.setEstimatedArrivalTime(date);
+
 		// 订单号
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String str = format.format(date);
@@ -136,6 +176,13 @@ public class CompanyServiceImpl implements CompanyService {
 		install.setOrderTime(date);
 		install.setGmtCreate(date);
 		install.setGmtModified(date);
+
+		// 获取当前时间后2天
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.DATE, +2);// 当前时间+2天
+		date = calendar.getTime();
+		install.setEstimatedArrivalTime(date);
 
 		// 订单号
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
@@ -196,7 +243,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 		return repairMapper.updateByPrimaryKey(repair) > 0 ? repair.getId() : 0;
 	}
-	
+
 	@Override
 	public long updateInstallEngineer(long id, String engineerName) {
 		// 从数据库获得工程师电话
@@ -211,7 +258,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 		return installMapper.updateByPrimaryKey(install) > 0 ? install.getId() : 0;
 	}
-	
+
 	@Override
 	public long updateMaintainEngineer(long id, String engineerName) {
 		// 从数据库获得工程师电话
@@ -397,6 +444,140 @@ public class CompanyServiceImpl implements CompanyService {
 	public long deleteErrorById(long id) {
 
 		return errorMapper.deleteByPrimaryKey(id) > 0 ? 1 : 0;
+	}
+
+	@Override
+	public List<Repair> selectUnfinishedRepairByEngineer(String account) {
+
+		return repairMapper.selectUnfinishedRepairByEngineer(account);
+	}
+
+	@Override
+	public List<Install> selectUnfinishedInstallByEngineer(String account) {
+
+		return installMapper.selectUnfinishedInstallByEngineer(account);
+	}
+
+	@Override
+	public List<Maintain> selectUnfinishedMaintainByEngineer(String account) {
+
+		return maintainMapper.selectUnfinishedMaintainByEngineer(account);
+	}
+
+	@Override
+	public List<Repair> selectFinishedRepairByEngineer(String account) {
+
+		return repairMapper.selectFinishedRepairByEngineer(account);
+	}
+
+	@Override
+	public List<Install> selectFinishedInstallByEngineer(String account) {
+
+		return installMapper.selectFinishedInstallByEngineer(account);
+	}
+
+	@Override
+	public List<Maintain> selectFinishedMaintainByEngineer(String account) {
+
+		return maintainMapper.selectFinishedMaintainByEngineer(account);
+	}
+
+	@Override
+	public long repairSignIn(long id) {
+		Repair repair = repairMapper.selectByPrimaryKey(id);
+
+		Date date = new Date();
+		repair.setArrivaledTime(date);
+		repair.setStatus("进行中");
+		return repairMapper.updateByPrimaryKey(repair) > 0 ? 1 : 0;
+	}
+
+	@Override
+	public long installSignIn(long id) {
+		Install install = installMapper.selectByPrimaryKey(id);
+
+		Date date = new Date();
+		install.setArrivaledTime(date);
+		install.setStatus("进行中");
+
+		return installMapper.updateByPrimaryKey(install)>0?1:0;
+	}
+
+	@Override
+	public long maintainSignIn(long id) {
+		Maintain maintain = maintainMapper.selectByPrimaryKey(id);
+		Date date = new Date();
+		maintain.setArrivaledTime(date);
+		maintain.setStatus("进行中");
+		return maintainMapper.updateByPrimaryKey(maintain)>0?1:0;
+	}
+
+	@Override
+	public long repairFinish(long id) {
+		Repair repair = repairMapper.selectByPrimaryKey(id);
+
+		Date date = new Date();
+		repair.setFinishedTime(date);
+		repair.setStatus("已完成");
+		return repairMapper.updateByPrimaryKey(repair)>0?1:0;
+	}
+
+	@Override
+	public long installFinish(long id) {
+		Install install = installMapper.selectByPrimaryKey(id);
+
+		Date date = new Date();
+		install.setFinishedTime(date);
+		install.setStatus("已完成");
+		return installMapper.updateByPrimaryKey(install)>0?1:0;
+	}
+
+	@Override
+	public long maintainFinish(long id) {
+		Maintain maintain = maintainMapper.selectByPrimaryKey(id);
+
+		Date date = new Date();
+		maintain.setFinishedTime(date);
+		maintain.setStatus("已完成");
+		return maintainMapper.updateByPrimaryKey(maintain)>0?1:0;
+	}
+
+	@Override
+	public long updateRepair(Map<String, Object> params) {
+		String id = params.get("id").toString();
+		Repair repair = repairMapper.selectByPrimaryKey(Long.valueOf(id));
+		repair.setIsInsuranced(Byte.valueOf(params.get("isInsuranced").toString()));
+		repair.setIsReplaceProduct(Byte.valueOf(params.get("isReplaceProduct").toString()));
+		repair.setIsReturnFactory(Byte.valueOf(params.get("isReturnFactory").toString()));
+		repair.setHospitalName(params.get("hospitalName").toString());
+		repair.setHospitalContact(params.get("hospitalContact").toString());
+		repair.setHospitalTel(params.get("hospitalTel").toString());
+		repair.setProductModel(params.get("productModel").toString());
+		repair.setProductName(params.get("productName").toString());
+		repair.setSerialNumber(params.get("serialNumber").toString());
+		repair.setProductVersion(params.get("productVersion").toString());
+		repair.setSampleBoxType(params.get("sampleBoxType").toString());
+		repair.setReagentType(params.get("reagentType").toString());
+		repair.setPhenomenon(params.get("phenomenon").toString());
+		repair.setReason(params.get("reason").toString());
+		repair.setSolution(params.get("solution").toString());
+		repair.setReplaceNameCode(params.get("replaceNameCode").toString());
+		repair.setOriginalNameCode(params.get("originalNameCode").toString());
+		repair.setProductCondition(params.get("productCondition").toString());
+		repair.setOrderRemarks(params.get("orderRemarks").toString());
+		return repairMapper.updateByPrimaryKey(repair)>0?1:0;
+	}
+
+	@Override
+	public long updateInstall(Install install) {
+		
+		return installMapper.updateByPrimaryKey(install)>0?1:0;
+	}
+
+	@Override
+	public long updateMaintain(Maintain maintain) {
+		
+		return maintainMapper.updateByPrimaryKey(maintain)>0?1:0;
 	}
 
 }

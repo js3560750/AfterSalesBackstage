@@ -232,4 +232,18 @@
 		where openid =#{openid,jdbcType=VARCHAR} and status !='已完成'
 		order by id desc
 	</select>
+	
+	<select id="selectUnfinishedRepairByEngineer" resultMap="BaseResultMap">
+		select *
+		from repair
+		where engineer_tel =#{account,jdbcType=VARCHAR} and status !='已完成'
+		order by id desc
+	</select>
+	
+	<select id="selectFinishedRepairByEngineer" resultMap="BaseResultMap">
+		select *
+		from repair
+		where engineer_tel =#{account,jdbcType=VARCHAR} and status ='已完成'
+		order by id desc
+	</select>
 </mapper>

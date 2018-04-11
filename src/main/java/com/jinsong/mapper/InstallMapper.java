@@ -53,4 +53,14 @@ public interface InstallMapper {
      * 通过hospital_name或者engineer来搜索repair工单
      */
     List<Install> selectBySearch(String searchInfo);
+    
+    /**
+     * 通过工程师account来搜索未完成的Install工单
+     */
+	List<Install> selectUnfinishedInstallByEngineer(String account);
+	
+	/**
+     * 通过工程师account来搜索已经完成的Install工单
+     */
+	List<Install> selectFinishedInstallByEngineer(String account);
 }

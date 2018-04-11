@@ -89,4 +89,9 @@
 		order
 		by id desc
   </select>
+  <select id="selectByAccount" resultMap="BaseResultMap">
+		select *
+		from engineer
+		where account = #{account}
+  </select>
 </mapper>

@@ -273,4 +273,18 @@
 		order
 		by id desc
 	</select>
+	
+	<select id="selectUnfinishedMaintainByEngineer" resultMap="BaseResultMap">
+		select *
+		from maintain
+		where engineer_tel =#{account,jdbcType=VARCHAR} and status !='已完成'
+		order by id desc
+	</select>
+	
+	<select id="selectFinishedMaintainByEngineer" resultMap="BaseResultMap">
+		select *
+		from maintain
+		where engineer_tel =#{account,jdbcType=VARCHAR} and status ='已完成'
+		order by id desc
+	</select>
 </mapper>

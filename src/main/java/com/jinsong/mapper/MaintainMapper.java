@@ -1,5 +1,6 @@
 package com.jinsong.mapper;
 
+import com.jinsong.model.Install;
 import com.jinsong.model.Maintain;
 
 import java.util.List;
@@ -52,4 +53,14 @@ public interface MaintainMapper {
      * 通过hospital_name或者engineer来搜索repair工单
      */
     List<Maintain> selectBySearch(String searchInfo);
+    
+    /**
+     * 通过工程师account来搜索未完成的Maintain工单
+     */
+	List<Maintain> selectUnfinishedMaintainByEngineer(String account);
+	
+	/**
+     * 通过工程师account来搜索已经完成的Maintain工单
+     */
+	List<Maintain> selectFinishedMaintainByEngineer(String account);
 }

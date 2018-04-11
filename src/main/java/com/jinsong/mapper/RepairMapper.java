@@ -72,4 +72,14 @@ public interface RepairMapper {
 	 * 根据医生的微信昵称获取状态不等于“已完成”的订单
 	 */
 	List<Repair> selectUnfinishByOpenid(String openid);
+	
+	/**
+     * 通过工程师account来搜索未完成的repair工单
+     */
+	List<Repair> selectUnfinishedRepairByEngineer(String account);
+	
+	/**
+     * 通过工程师account来搜索已经完成的repair工单
+     */
+	List<Repair> selectFinishedRepairByEngineer(String account);
 }

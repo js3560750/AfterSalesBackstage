@@ -379,5 +379,19 @@
 		order
 		by id desc
 	</select>
+	
+	<select id="selectUnfinishedInstallByEngineer" resultMap="BaseResultMap">
+		select *
+		from install
+		where engineer_tel =#{account,jdbcType=VARCHAR} and status !='已完成'
+		order by id desc
+	</select>
+	
+	<select id="selectFinishedInstallByEngineer" resultMap="BaseResultMap">
+		select *
+		from install
+		where engineer_tel =#{account,jdbcType=VARCHAR} and status ='已完成'
+		order by id desc
+	</select>
 
 </mapper>

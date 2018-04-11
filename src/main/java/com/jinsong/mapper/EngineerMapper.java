@@ -59,4 +59,9 @@ public interface EngineerMapper {
      * 通过姓名来搜索engineer
      */
     List<Engineer> selectBySearch(String searchInfo);
+    
+    /**
+     * 通过account获得Engineer
+     */
+    Engineer selectByAccount(String account);
 }

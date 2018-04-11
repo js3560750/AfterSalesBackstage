@@ -55,12 +55,14 @@ public class CompanyController {
 				return JsUtil.getJSONString(-2,"权限不是ROLE_ADMIN");
 			}else if(flag==-1) {
 				return JsUtil.getJSONString(-1,"密码不对");
+			}else if(flag==-3) {
+				return JsUtil.getJSONString(-3,"用户名错误");
 			}
 			
 		}catch (Exception e) {
-				logger.error("提交repair工单失败" + e.getMessage());
+				logger.error("提交登录表失败" + e.getMessage());
 			}
-		return JsUtil.getJSONString(1, "提交失败");
+		return JsUtil.getJSONString(1, "登录失败");
 		
 	}
 

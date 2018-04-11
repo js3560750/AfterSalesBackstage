@@ -1,6 +1,7 @@
 package com.jinsong.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,11 @@ public interface CompanyService {
 	 * 微信公司端账号登录
 	 */
 	long companyLogin(String account,String password);
+	
+	/**
+	 * 微信工程师端账号登录
+	 */
+	long engineerLogin(String account,String password);
 
 	/**
 	 * 管理员提交新的repair工单
@@ -196,5 +202,80 @@ public interface CompanyService {
 	 *
 	 */
 	long deleteErrorById(long id);
+	
+	/**
+     * 通过工程师account来搜索未完成的repair工单
+     */
+	List<Repair> selectUnfinishedRepairByEngineer(String account);
+	
+	/**
+     * 通过工程师account来搜索未完成的install工单
+     */
+	List<Install> selectUnfinishedInstallByEngineer(String account);
+	
+	/**
+     * 通过工程师account来搜索未完成的maintain工单
+     */
+	List<Maintain> selectUnfinishedMaintainByEngineer(String account);
+	
+	/**
+     * 通过工程师account来搜索已经完成的repair工单
+     */
+	List<Repair> selectFinishedRepairByEngineer(String account);
+	
+	/**
+     * 通过工程师account来搜索已经完成的install工单
+     */
+	List<Install> selectFinishedInstallByEngineer(String account);
+	
+	/**
+     * 通过工程师account来搜索已经完成的maintain工单
+     */
+	List<Maintain> selectFinishedMaintainByEngineer(String account);
+	
+	/**
+	 * 更新repair的到达时间并设置status=“进行中”
+	 */
+	long repairSignIn(long id);
+	
+	/**
+	 * 更新install的到达时间并设置status=“进行中”
+	 */
+	long installSignIn(long id);
+	
+	/**
+	 * 更新maintain的到达时间并设置status=“进行中”
+	 */
+	long maintainSignIn(long id);
+	
+	/**
+	 * 更新repair的完成时间并设置status=“已完成”
+	 */
+	long repairFinish(long id);
+	
+	/**
+	 * 更新install的完成时间并设置status=“已完成”
+	 */
+	long installFinish(long id);
+	
+	/**
+	 * 更新maintain的完成时间并设置status=“已完成”
+	 */
+	long maintainFinish(long id);
+	
+	/**
+	 * 更新repair工单信息
+	 */
+	long updateRepair(Map<String, Object> params);
+	
+	/**
+	 * 更新install工单信息
+	 */
+	long updateInstall(Install install);
+	
+	/**
+	 * 更新maintain工单信息
+	 */
+	long updateMaintain(Maintain maintain);
 	
 }
