@@ -570,12 +570,26 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public long updateInstall(Install install) {
+		Install old =installMapper.selectByPrimaryKey(install.getId());
+		install.setArrivaledTime(old.getArrivaledTime());
+		install.setEstimatedArrivalTime(old.getEstimatedArrivalTime());
+		install.setFinishedTime(old.getFinishedTime());
+		install.setOrderTime(old.getOrderTime());
+		install.setGmtCreate(old.getGmtCreate());
+		install.setGmtModified(new Date());
 		
 		return installMapper.updateByPrimaryKey(install)>0?1:0;
 	}
 
 	@Override
 	public long updateMaintain(Maintain maintain) {
+		Maintain old =maintainMapper.selectByPrimaryKey(maintain.getId());
+		maintain.setArrivaledTime(old.getArrivaledTime());
+		maintain.setEstimatedArrivalTime(old.getEstimatedArrivalTime());
+		maintain.setFinishedTime(old.getFinishedTime());
+		maintain.setOrderTime(old.getOrderTime());
+		maintain.setGmtCreate(old.getGmtCreate());
+		maintain.setGmtModified(new Date());
 		
 		return maintainMapper.updateByPrimaryKey(maintain)>0?1:0;
 	}

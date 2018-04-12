@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -174,6 +175,32 @@ public class EngineerWeiXinController {
 
 		try {
 			if (companyService.updateRepair(params)>0) {
+				return JsUtil.getJSONString(0, "添加维修工单信息成功");
+			}
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
+		return JsUtil.getJSONString(1, "提交失败");
+	}
+	
+	@PostMapping("/install/update")
+	public String installUpdate(@ModelAttribute Install install) {
+
+		try {
+			if (companyService.updateInstall(install)>0) {
+				return JsUtil.getJSONString(0, "添加维修工单信息成功");
+			}
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
+		return JsUtil.getJSONString(1, "提交失败");
+	}
+	
+	@PostMapping("/maintain/update")
+	public String maintainUpdate(@ModelAttribute Maintain maintain) {
+
+		try {
+			if (companyService.updateMaintain(maintain)>0) {
 				return JsUtil.getJSONString(0, "添加维修工单信息成功");
 			}
 		} catch (Exception e) {
