@@ -16,53 +16,53 @@
   		<fieldset>
     	<legend>安装工单详情</legend>
     		<div class="am-form-group">
-      			<label for="doc-ta-1">id</label>
+      			<label>id</label>
       				<p><input type="text" class="am-form-field am-radius" name="id" th:value="${model.id}" /></p>
-      			<label for="doc-ta-1">工单编号</label>
+      			<label>工单编号</label>
       				<p><input type="text" class="am-form-field am-radius" name="orderNumber" th:value="${model.orderNumber}" /></p>
-      			<label for="doc-ta-1">工程师</label>
+      			<label>工程师</label>
       				<p><input type="text" class="am-form-field am-radius" name="engineer" th:value="${model.engineer}" /></p>
-      			<label for="doc-ta-1">工程师电话</label>
+      			<label>工程师电话</label>
       				<p><input type="text" class="am-form-field am-radius" name="engineerTel" th:value="${model.engineerTel}" /></p> 
-      			<label for="doc-ta-1">工单状态</label>
+      			<label>工单状态</label>
       				<p><input type="text" class="am-form-field am-radius" name="status" th:value="${model.status}" /></p>
-      			<label for="doc-ta-1">派单时间</label>
+      			<label>派单时间</label>
       				<p><input type="text" class="am-form-field am-radius" name="orderTime" th:value="${model.orderTime}" /></p>
-      			<label for="doc-ta-1">预计到达时间</label>
+      			<label>预计到达时间</label>
       				<p><input type="text" class="am-form-field am-radius" name="estimatedArrivalTime" th:value="${model.estimatedArrivalTime}" /></p> 
-      			<label for="doc-ta-1">实际到达时间</label>
+      			<label>实际到达时间</label>
       				<p><input type="text" class="am-form-field am-radius" name="arrivaledTime" th:value="${model.arrivaledTime}" /></p> 
-      			<label for="doc-ta-1">工单完成时间</label>
+      			<label>工单完成时间</label>
       				<p><input type="text" class="am-form-field am-radius" name="finishedTime" th:value="${model.finishedTime}" /></p> 
-      			<label for="doc-ta-1">医院名称</label>
+      			<label>医院名称</label>
       				<p><input type="text" class="am-form-field am-radius" name="hospitalName" th:value="${model.hospitalName}" /></p>
-            <label for="doc-ta-1">医院科室名称</label>
+            <label>医院科室名称</label>
               <p><input type="text" class="am-form-field am-radius" name="hospitalDepartment" th:value="${model.hospitalDepartment}" /></p>
-            <label for="doc-ta-1">医院地址</label>
+            <label>医院地址</label>
               <p><input type="text" class="am-form-field am-radius" name="hospitalAddress" th:value="${model.hospitalAddress}" /></p>
-      			<label for="doc-ta-1">医院联系人</label>
+      			<label>医院联系人</label>
       				<p><input type="text" class="am-form-field am-radius" name="hospitalContact" th:value="${model.hospitalContact}" /></p>
-      			<label for="doc-ta-1">医院联系人电话</label>
+      			<label>医院联系人电话</label>
       				<p><input type="text" class="am-form-field am-radius" name="hospitalTel" th:value="${model.hospitalTel}" /></p>
-            <label for="doc-ta-1">产品类型</label>
+            <label>产品类型</label>
               <p><input type="text" class="am-form-field am-radius" name="productType" th:value="${model.productType}" /></p>
-      			<label for="doc-ta-1">产品型号</label>
+      			<label>产品型号</label>
       				<p><input type="text" class="am-form-field am-radius" name="productModel" th:value="${model.productModel}" /></p> 
-      			<label for="doc-ta-1">产品序列号</label>
+      			<label>产品序列号</label>
       				<p><input type="text" class="am-form-field am-radius" name="serialNumber" th:value="${model.serialNumber}" /></p>
-      			<label for="doc-ta-1">外包装情况</label>
+      			<label>外包装情况</label>
       				<p><input type="text" class="am-form-field am-radius" name="packaging" th:value="${model.packaging}" /></p>
-      			<label for="doc-ta-1">仪器外观</label>
+      			<label>仪器外观</label>
       				<p><input type="text" class="am-form-field am-radius" name="outAppearance" th:value="${model.outAppearance}" /></p>
-      			<label for="doc-ta-1">LIS状态</label>
+      			<label>LIS状态</label>
       				<p><input type="text" class="am-form-field am-radius" name="lis" th:value="${model.lis}" /></p>
-            <label for="doc-ta-1">IP地址</label>
+            <label>IP地址</label>
               <p><input type="text" class="am-form-field am-radius" name="ip" th:value="${model.ip}" /></p>
-      			<label for="doc-ta-1">安装状态</label>
+      			<label>安装状态</label>
               <p><input type="text" class="am-form-field am-radius" name="installStauts" th:value="${model.installStauts}" /></p>
 
             <!--MYSQL中的tinyint类型取出来，如果是0则取出来是false，如果是1则取出来是true-->
-            <label for="doc-ta-1">是否退货</label>
+            <label>是否退货</label>
         			<div class="am-radio">
                 <label>
                   <input type="radio" name="isReturnPurchase" checked>
@@ -70,7 +70,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">电脑显示器是否正常</label>
+            <label>电脑显示器是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isMonitor" checked>
@@ -78,7 +78,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">电脑主机是否正常</label>
+            <label>电脑主机是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isComputer" checked>
@@ -86,7 +86,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">返回状态是否正常</label>
+            <label>返回状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isReturnStatus" checked>
@@ -94,7 +94,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">显微镜状态是否正常</label>
+            <label>显微镜状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isMicroscope" checked>
@@ -102,7 +102,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">液路系统状态是否正常</label>
+            <label>液路系统状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isLiquid" checked>
@@ -110,7 +110,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">夹管阀状态是否正常</label>
+            <label>夹管阀状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isPinch" checked>
@@ -118,7 +118,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">镜检自动识别状态是否正常</label>
+            <label>镜检自动识别状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isAutoIdentify" checked>
@@ -126,7 +126,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">步进电机状态是否正常</label>
+            <label>步进电机状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isStepMotor" checked>
@@ -134,7 +134,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">微动开关状态是否正常</label>
+            <label>微动开关状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isMicroSwitch" checked>
@@ -142,7 +142,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">金标卡自动识别状态是否正常</label>
+            <label>金标卡自动识别状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isGold" checked>
@@ -150,7 +150,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">直流电机状态是否正常</label>
+            <label>直流电机状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isDcMotor" checked>
@@ -158,7 +158,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">光耦状态是否正常</label>
+            <label>光耦状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isOpto" checked>
@@ -166,7 +166,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">粪便性状识别状态是否正常</label>
+            <label>粪便性状识别状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isStoolTrait" checked>
@@ -174,7 +174,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">蠕动泵状态是否正常</label>
+            <label>蠕动泵状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isPeristalticPump" checked>
@@ -182,7 +182,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">粪便颜色识别状态是否正常</label>
+            <label>粪便颜色识别状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isStoolColor" checked>
@@ -190,7 +190,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">自动进样状态是否正常</label>
+            <label>自动进样状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isImportSample" checked>
@@ -198,7 +198,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">自动出样状态是否正常</label>
+            <label>自动出样状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isExposeSample" checked>
@@ -206,7 +206,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">交叉污染状态是否正常</label>
+            <label>交叉污染状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isCrossPollution" checked>
@@ -214,7 +214,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">计数池状态是否正常</label>
+            <label>计数池状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isCountingPool" checked>
@@ -222,7 +222,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">仪器开关状态是否正常</label>
+            <label>仪器开关状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isSwitch" checked>
@@ -230,7 +230,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">自动搅拌系统状态是否正常</label>
+            <label>自动搅拌系统状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isMixSystem" checked>
@@ -238,7 +238,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">交流电源盒状态是否正常</label>
+            <label>交流电源盒状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isPowerBox" checked>
@@ -246,7 +246,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">D15开关状态是否正常</label>
+            <label>D15开关状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isD15" checked>
@@ -254,7 +254,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">电气自动化系统状态是否正常</label>
+            <label>电气自动化系统状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isElectricAuto" checked>
@@ -262,7 +262,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">电路系统状态是否正常</label>
+            <label>电路系统状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isElectircCircuit" checked>
@@ -270,7 +270,7 @@
                   </input>
                 </label>  
               </div>
-            <label for="doc-ta-1">降压系统状态是否正常</label>
+            <label>降压系统状态是否正常</label>
               <div class="am-radio">
                 <label>
                   <input type="radio" name="isBuck" checked>
@@ -278,85 +278,85 @@
                   </input>
                 </label>  
               </div>	
-    			<label for="doc-ta-1">零地电压</label>
+    			<label>零地电压</label>
       				<p><input type="text" class="am-form-field am-radius" name="zeroVoltage" th:value="${model.zeroVoltage}" /></p>
-      			<label for="doc-ta-1">仪器APP应用版本</label>
+      			<label>仪器APP应用版本</label>
       				<p><input type="text" class="am-form-field am-radius" name="appVersion" th:value="${model.appVersion}" /></p>
-      			<label for="doc-ta-1">主机硬盘</label>
+      			<label>主机硬盘</label>
       				<p><input type="text" class="am-form-field am-radius" name="hardDisk" th:value="${model.hardDisk}" /></p>
-      			<label for="doc-ta-1">电脑系统版本</label>
+      			<label>电脑系统版本</label>
       				<p><input type="text" class="am-form-field am-radius" name="computerVersion" th:value="${model.computerVersion}" /></p>
-      			<label for="doc-ta-1">主机CPU</label>
+      			<label>主机CPU</label>
       				<p><input type="text" class="am-form-field am-radius" name="cpu" th:value="${model.cpu}" /></p> 
-      			<label for="doc-ta-1">主机光驱</label>
+      			<label>主机光驱</label>
       				<p><input type="text" class="am-form-field am-radius" name="cd" th:value="${model.cd}" /></p> 
-      			<label for="doc-ta-1">主机运行内存</label>
+      			<label>主机运行内存</label>
       				<p><input type="text" class="am-form-field am-radius" name="ram" th:value="${model.ram}" /></p> 
-      			<label for="doc-ta-1">仪器供电电压</label>
+      			<label>仪器供电电压</label>
       				<p><input type="text" class="am-form-field am-radius" name="supplyVoltage" th:value="${model.supplyVoltage}" /></p>
-      			<label for="doc-ta-1">电压供电电压</label>
+      			<label>电压供电电压</label>
       				<p><input type="text" class="am-form-field am-radius" name="computerVoltage" th:value="${model.computerVoltage}" /></p>
-      			<label for="doc-ta-1">废液桶</label>
+      			<label>废液桶</label>
       				<p><input type="text" class="am-form-field am-radius" name="wasteLiquidBucket" th:value="${model.wasteLiquidBucket}" /></p>
-      			<label for="doc-ta-1">卡仓盒</label>
+      			<label>卡仓盒</label>
       				<p><input type="text" class="am-form-field am-radius" name="cardBox" th:value="${model.cardBox}" /></p>
-      			<label for="doc-ta-1">视频线</label>
+      			<label>视频线</label>
       				<p><input type="text" class="am-form-field am-radius" name="videoCable" th:value="${model.videoCable}" /></p>
-      			<label for="doc-ta-1">稀释液桶</label>
+      			<label>稀释液桶</label>
       				<p><input type="text" class="am-form-field am-radius" name="diluentBucket" th:value="${model.diluentBucket}" /></p>
-      			<label for="doc-ta-1">仪器电源线</label>
+      			<label>仪器电源线</label>
       				<p><input type="text" class="am-form-field am-radius" name="instrumentPowerCable" th:value="${model.instrumentPowerCable}" /></p>
-            <label for="doc-ta-1">USB接口线</label>
+            <label>USB接口线</label>
               <p><input type="text" class="am-form-field am-radius" name="usbCable" th:value="${model.usbCable}" /></p> 
-            <label for="doc-ta-1">清洗液桶</label>
+            <label>清洗液桶</label>
               <p><input type="text" class="am-form-field am-radius" name="cleanBucket" th:value="${model.cleanBucket}" /></p> 
-            <label for="doc-ta-1">电脑主机电源线</label>
+            <label>电脑主机电源线</label>
               <p><input type="text" class="am-form-field am-radius" name="computerCable" th:value="${model.computerCable}" /></p>
-            <label for="doc-ta-1">合格证</label>
+            <label>合格证</label>
               <p><input type="text" class="am-form-field am-radius" name="certificate" th:value="${model.certificate}" /></p>
-            <label for="doc-ta-1">保养液桶</label>
+            <label>保养液桶</label>
               <p><input type="text" class="am-form-field am-radius" name="maintenanceBucket" th:value="${model.maintenanceBucket}" /></p>
-            <label for="doc-ta-1">显示器电源线</label>
+            <label>显示器电源线</label>
               <p><input type="text" class="am-form-field am-radius" name="monitorCable" th:value="${model.monitorCable}" /></p>
-            <label for="doc-ta-1">仪器</label>
+            <label>仪器</label>
               <p><input type="text" class="am-form-field am-radius" name="instrument" th:value="${model.instrument}" /></p>
-            <label for="doc-ta-1">仪器操作手册</label>
+            <label>仪器操作手册</label>
               <p><input type="text" class="am-form-field am-radius" name="manual" th:value="${model.manual}" /></p>
-            <label for="doc-ta-1">电脑主机</label>
+            <label>电脑主机</label>
               <p><input type="text" class="am-form-field am-radius" name="computer" th:value="${model.computer}" /></p>
-            <label for="doc-ta-1">显示器</label>
+            <label>显示器</label>
               <p><input type="text" class="am-form-field am-radius" name="monitor" th:value="${model.monitor}" /></p> 
-            <label for="doc-ta-1">标本盒支架</label>
+            <label>标本盒支架</label>
               <p><input type="text" class="am-form-field am-radius" name="sampleHolder" th:value="${model.sampleHolder}" /></p>
-            <label for="doc-ta-1">鼠标</label>
+            <label>鼠标</label>
               <p><input type="text" class="am-form-field am-radius" name="mouse" th:value="${model.mouse}" /></p>
-            <label for="doc-ta-1">键盘</label>
+            <label>键盘</label>
               <p><input type="text" class="am-form-field am-radius" name="keyboard" th:value="${model.keyboard}" /></p>
-            <label for="doc-ta-1">跟机耗材</label>
+            <label>跟机耗材</label>
               <p><input type="text" class="am-form-field am-radius" name="supplies" th:value="${model.supplies}" /></p>
-            <label for="doc-ta-1">硅胶管</label>
+            <label>硅胶管</label>
               <p><input type="text" class="am-form-field am-radius" name="siliconeTube" th:value="${model.siliconeTube}" /></p>
-            <label for="doc-ta-1">是否DOA</label>
+            <label>是否DOA</label>
               <p><input type="text" class="am-form-field am-radius" name="whetherDoa" th:value="${model.whetherDoa}" /></p>
-            <label for="doc-ta-1">doa故障描述信息</label>
+            <label>doa故障描述信息</label>
               <p><input type="text" class="am-form-field am-radius" name="doaInformation" th:value="${model.doaInformation}" /></p>
-            <label for="doc-ta-1">硬件到位</label>
+            <label>硬件到位</label>
               <p><input type="text" class="am-form-field am-radius" name="hardware" th:value="${model.hardware}" /></p> 
-            <label for="doc-ta-1">硬件未到位原因</label>
+            <label>硬件未到位原因</label>
               <p><input type="text" class="am-form-field am-radius" name="hardwareReason" th:value="${model.hardwareReason}" /></p>
-            <label for="doc-ta-1">老师能否操作</label>
+            <label>老师能否操作</label>
               <p><input type="text" class="am-form-field am-radius" name="teacherOperator" th:value="${model.teacherOperator}" /></p>
-            <label for="doc-ta-1">老师不能操作原因</label>
+            <label>老师不能操作原因</label>
               <p><input type="text" class="am-form-field am-radius" name="teacherOperatorReason" th:value="${model.teacherOperatorReason}" /></p>
-            <label for="doc-ta-1">运行情况</label>
+            <label>运行情况</label>
               <p><input type="text" class="am-form-field am-radius" name="operationCondition" th:value="${model.operationCondition}" /></p>
-            <label for="doc-ta-1">不能运行原因</label>
+            <label>不能运行原因</label>
               <p><input type="text" class="am-form-field am-radius" name="operationConditionReason" th:value="${model.operationConditionReason}" /></p>
-            <label for="doc-ta-1">客户意见</label>
+            <label>客户意见</label>
               <p><input type="text" class="am-form-field am-radius" name="clientFeedback" th:value="${model.clientFeedback}" /></p>
-            <label for="doc-ta-1">备注</label>
+            <label>备注</label>
               <p><input type="text" class="am-form-field am-radius" name="remarks" th:value="${model.remarks}" /></p>
-      			<label for="doc-ta-1">--END--</label>
+      			<label>--END--</label>
       			<br>
     		</div>
     	</fieldset>

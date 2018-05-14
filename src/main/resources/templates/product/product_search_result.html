@@ -23,14 +23,14 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>产品序列号</th>
+							<th>产品编号（序列号）</th>
 							<th>产品名称</th>
 							<th>产品型号</th>
 							<th>医院名称</th>
 							<th>仪器状态</th>
 							<th>维修次数</th>
 							<th>保养次数</th>
-							<th>发货日期</th>
+							<th>装机日期</th>
 							<th>管理操作</th>
 						</tr>
 					</thead>
@@ -45,7 +45,7 @@
 							<td th:text="${sk.status}">仪器状态</td>
 							<td th:text="${sk.repairTimes}">维修次数</td>
 							<td th:text="${sk.maintenanceTimes}">保养次数</td>
-							<td th:text="${#dates.format(sk.shipDate,'yyyy-MM-dd HH:mm:ss')}">发货日期</td>
+							<td th:text="${sk.shipDate}">装机日期</td>
 							<td>
 								<a class="btn btn-info" th:href="@{/web/product/{id}(id=${sk.id})}">详情页</a>
 							<!--

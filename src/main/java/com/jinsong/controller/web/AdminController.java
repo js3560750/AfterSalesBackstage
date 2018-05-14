@@ -82,9 +82,9 @@ private static final Logger logger = LoggerFactory.getLogger(AdminController.cla
 		
 		PageHelper.startPage(pn,8);
 		List<Admin> list = accountService.selectAllAdmin();
-		
+
 		PageInfo<Admin> pageInfo = new PageInfo<Admin>(list);
-		
+
 		model.addObject("pageInfo",pageInfo);
 		return model;
 		

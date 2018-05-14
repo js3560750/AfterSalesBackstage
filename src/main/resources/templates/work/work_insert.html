@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <!--AmazingUI -->
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <title>后台管理</title>
+</head>
+<body>
+<!--添加下面两个div 以给页面添加滑动条！！！-->
+<div class="admin-content">
+    <div class="admin-content-body">
+        <form class="am-form" method="post" enctype="multipart/form-data" action="/web/work">
+            <fieldset>
+                <legend>售后工作情况日表</legend>
+                <div class="am-form-group">
+                    <label>人员姓名</label>
+                    <p><input type="text" class="am-form-field am-radius" placeholder="请输入" name="name"/></p>
+                    <label>出勤日期</label>
+                    <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'yyyy-mm-dd'}">
+                        <span class="am-input-group-btn am-datepicker-add-on">
+                            <button class="am-btn am-btn-default" type="button">
+                                <span class="am-icon-calendar">
+                                </span>
+                            </button>
+                        </span>
+                        <input type="text" class="am-form-field" placeholder="请选择日期" readonly name="attendanceTime">
+                    </div>
+                    <label>工作开始日期</label>
+                    <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'yyyy-mm-dd'}">
+                        <span class="am-input-group-btn am-datepicker-add-on">
+                            <button class="am-btn am-btn-default" type="button">
+                                <span class="am-icon-calendar">
+                                </span>
+                            </button>
+                        </span>
+                        <input type="text" class="am-form-field" placeholder="请选择日期" readonly name="workTime">
+                    </div>
+                    <label>医院客户名称</label>
+                    <p><input type="text" class="am-form-field am-radius" placeholder="请输入" name="hospitalName"/></p>
+                    <label>仪器型号</label>
+                    <p><input type="text" class="am-form-field am-radius" placeholder="请输入" name="productModel"/></p>
+                    <label>故障内容</label>
+                    <p><input type="text" class="am-form-field am-radius" placeholder="请输入" name="error"/></p>
+                    <label>处理措施</label>
+                    <p><input type="text" class="am-form-field am-radius" placeholder="请输入" name="solution"/></p>
+                    <label>完成情况</label>
+                    <div class="am-radio">
+                        <label>
+                            <input type="radio" name="finished" value="已完成">
+                            已完成
+                        </label>
+                    </div>
+
+                    <div class="am-radio">
+                        <label>
+                            <input type="radio" name="finished" value="未完成" checked>
+                            未完成
+                        </label>
+                    </div>
+
+                    <label>预计完成日期</label>
+                    <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'yyyy-mm-dd'}">
+                        <span class="am-input-group-btn am-datepicker-add-on">
+                            <button class="am-btn am-btn-default" type="button">
+                                <span class="am-icon-calendar">
+                                </span>
+                            </button>
+                        </span>
+                        <input type="text" class="am-form-field" placeholder="请选择日期" readonly name="finishedTime">
+                    </div>
+                    <label>备注</label>
+                    <p><input type="text" class="am-form-field am-radius" placeholder="请输入" name="remark"/></p>
+
+                </div>
+                <p>
+                    <button type="submit" class="am-btn am-btn-primary">提交</button>
+                </p>
+            </fieldset>
+        </form>
+
+
+    </div>
+</div>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

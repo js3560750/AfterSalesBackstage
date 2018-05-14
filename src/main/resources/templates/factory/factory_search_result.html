@@ -23,7 +23,7 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>仪器编号</th>
+							<th>产品编号（序列号）</th>
 							<th>产品名称</th>
 							<th>产品型号</th>
 							<th>领料批号</th>
@@ -38,7 +38,7 @@
 						<!-- thymeleaf标签全部写在标签里面，标签外面也能写静态的数据，真正实现一个页面里，前后端数据分离！！！ -->
 						<tr th:each="sk:${factoryList}">	<!-- list是后端传过来的Model里的变量名 -->
 							<td th:text="${sk.id}">ID</td>
-							<td th:text="${sk.serialNumber}">仪器编号</td>
+							<td th:text="${sk.serialNumber}">产品编号（序列号）</td>
 							<td th:text="${sk.productName}">产品名称</td>
 							<td th:text="${sk.productModel}">产品型号</td>
 							<td th:text="${sk.pickingNumber}">领料批号</td>

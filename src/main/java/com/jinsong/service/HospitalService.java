@@ -1,5 +1,6 @@
 package com.jinsong.service;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +25,7 @@ public interface HospitalService {
 	/**
 	 * 医生提交repair工单上传的图片
 	 */
-	long insertRepairImg(MultipartFile file, HttpServletRequest request);
+	long insertRepairImg(MultipartFile file, HttpServletRequest request) throws FileNotFoundException;
 	
 	/**
 	 * 根据医生的微信昵称获取状态不等于“已完成”的订单

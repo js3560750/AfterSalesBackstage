@@ -46,4 +46,9 @@ public interface ImageMapper {
      * @mbg.generated Thu Feb 08 10:37:57 CST 2018
      */
     int updateByPrimaryKey(Image record);
+
+    /**
+     * 根据工单号获取所有对应的图片
+     */
+    List<Image> selectAllByOrderNumber(String orderNumber);
 }

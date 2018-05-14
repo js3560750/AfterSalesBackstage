@@ -24,14 +24,14 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>产品序列号</th>
+							<th>产品编号（序列号）</th>
 							<th>产品名称</th>
 							<th>产品型号</th>
 							<th>医院名称</th>
 							<th>仪器状态</th>
 							<th>维修次数</th>
 							<th>保养次数</th>
-							<th>发货日期</th>
+							<th>装机日期</th>
 							<th>管理操作</th>
 						</tr>
 					</thead>
@@ -39,14 +39,14 @@
 						<!-- thymeleaf标签全部写在标签里面，标签外面也能写静态的数据，真正实现一个页面里，前后端数据分离！！！ -->
 						<tr th:each="sk:${pageInfo.list}">	<!-- list是后端传过来的Model里的变量名 -->
 							<td th:text="${sk.id}">ID</td>
-							<td th:text="${sk.serialNumber}">产品序列号</td>
+							<td th:text="${sk.serialNumber}">产品编号（序列号）</td>
 							<td th:text="${sk.productName}">产品名称</td>
 							<td th:text="${sk.productModel}">产品型号</td>
 							<td th:text="${sk.hospitalName}">医院名称</td>
 							<td th:text="${sk.status}">仪器状态</td>
 							<td th:text="${sk.repairTimes}">维修次数</td>
 							<td th:text="${sk.maintenanceTimes}">保养次数</td>
-							<td th:text="${#dates.format(sk.shipDate,'yyyy-MM-dd HH:mm:ss')}">发货日期</td>
+							<td th:text="${sk.shipDate}">装机日期</td>
 							<td>
 								<a class="btn btn-info" th:href="@{/web/product/{id}(id=${sk.id})}">详情\修改</a>
 							<!--

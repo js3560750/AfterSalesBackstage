@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+  <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <style>
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 200%;
+      color: #333;
+      margin-top: 30px;
+    }
+    .header p {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="am-g">
+    <h1>查询售后人员日表</h1>
+    
+  </div>
+  <hr />
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    
+
+    <form class="am-form" method="post"  action="/web/work/list">
+      <label>请选择要查询的出勤日期</label>
+      <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'yyyy-mm-dd'}">
+                        <span class="am-input-group-btn am-datepicker-add-on">
+                            <button class="am-btn am-btn-default" type="button">
+                                <span class="am-icon-calendar">
+                                </span>
+                            </button>
+                        </span>
+        <input type="text" class="am-form-field" placeholder="请选择日期" readonly name="attendanceTime">
+      </div>
+      
+      
+      <br />
+      <div class="am-cf">
+        <input type="submit" name="" value="确认" class="am-btn am-btn-primary am-btn-sm am-fl">
+        
+      </div>
+    </form>
+
+    <hr>
+    
+    
+  </div>
+</div>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

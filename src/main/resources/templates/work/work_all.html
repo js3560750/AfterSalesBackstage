@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 新 Bootstrap 核心 CSS 文件 CDN联网版-->
+    <!-- <link
+        href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        rel="stylesheet"> -->
+    <!--新 Bootstrap 核心 CSS 文件 本地版-->
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>后台管理</title>
+
+</head>
+<body style="overflow-y: auto; overflow-x: auto">
+<!--添加了自动滚动条，当页面内容超出页面大小时出现滚动条-->
+<div class="container">
+    <br>
+    <div class="panel panel-default">
+
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>人员姓名</th>
+                    <th>出勤日期</th>
+                    <th>工作开始日期</th>
+                    <th>医院客户名称</th>
+                    <th>仪器型号</th>
+                    <th>故障内容</th>
+                    <th>处理措施</th>
+                    <th>完成情况</th>
+                    <th>预计完成日期</th>
+                    <th>备注</th>
+                    <th>管理操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- thymeleaf标签全部写在标签里面，标签外面也能写静态的数据，真正实现一个页面里，前后端数据分离！！！ -->
+                <tr th:each="sk:${list}">    <!-- list是后端传过来的Model里的变量名 -->
+                    <td th:text="${sk.id}">ID</td>
+                    <td th:text="${sk.name}">人员姓名</td>
+                    <td th:text="${sk.attendanceTime}">出勤日期</td>
+                    <td th:text="${sk.workTime}">工作开始日期</td>
+                    <td th:text="${sk.hospitalName}">医院客户名称</td>
+                    <td th:text="${sk.productModel}">仪器型号</td>
+                    <td th:text="${sk.error}">故障内容</td>
+                    <td th:text="${sk.solution}">处理措施</td>
+                    <td th:text="${sk.finished}">完成情况</td>
+                    <td th:text="${sk.finishedTime}">预计完成日期</td>
+                    <td th:text="${sk.remark}">备注</td>
+                    <td>
+
+                        <!--
+                            a标签只能发送PUT请求，为了REST风格
+                            这里通过JS使点击a标签发送DELETE请求
+                            a标签的id里存储URL信息
+                        -->
+                        <a class="btn btn-danger" th:id="@{/web/work/{id}(id=${sk.id})}" onclick="javascript:
+							if(confirm('确定要删除此内容吗？')){
+								myDelete(this);
+								return true;
+							}
+							return false;">删除
+                        </a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--
+    a标签只能发送PUT请求，
+    这里通过JS使点击a标签发送DELETE请求
+    a标签的id里存储URL信息
+-->
+<script type="text/javascript">
+    function myDelete(node) {
+        var url = node.id;
+        $.ajax({
+            url: url,
+            type: "DELETE",
+            success: function (res) {
+                if (res) {
+                    window.location.reload();
+                    alert("删除成功");
+                } else {
+                    alert("删除失败");
+                }
+            }
+        })
+    }
+</script>
+
+
+<!--联网版本-->
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<!-- <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script> -->
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<!-- <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+
+<!--本地版本-->
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/bootstrap-3.3.7-dist/jquery-2.1.1/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
